@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pe.metrogo.spring</groupId>
-	<artifactId>demosp</artifactId>
+	<artifactId>MetroGo_2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>MetroGo_2</name>

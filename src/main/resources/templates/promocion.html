@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="ISO-8859-1"></meta>
+		
+		<title>Promocion</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/promocion/registrar}" method="post" th:object="${promocion}">
+				<div class="form-group">
+					
+					<label for="CPromocion">CODIGO:</label> 
+					<input type="text" class="form-control" th:field="*{CPromocion}"></input>
+					
+					<div class="form-group">
+					
+						<label 	for="nombre">NOMBRE:</label> 
+						<input type="text" th:field="*{NPromocion}" class="form-control" id="nombre"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NPromocion')}" 
+							th:errors="*{NPromocion}">
+						</div>
+						
+						<label for="DInicio">FECHA DE INICIO:</label> <input
+						type="date" th:field="*{DInicio}" class="form-control"
+						id="DInicio"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('DInicio')}"
+								th:errors="*{DInicio}"></div>
+							</div>
+							
+						<label for="DFin">FECHA DE FIN:</label> <input
+						type="date" th:field="*{DFin}" class="form-control"
+						id="DFin"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('DFin')}"
+								th:errors="*{DFin}"></div>
+							</div>
+						
+						<label 	for="descripcion">DESCRIPCION:</label> 
+						<input type="text" th:field="*{TDescripcion}" class="form-control" id="descripcion"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('TDescripcion')}" 
+							th:errors="*{TDescripcion}">
+						</div>
+						
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/promocion/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>

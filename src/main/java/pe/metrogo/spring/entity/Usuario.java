@@ -27,8 +27,6 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@NotEmpty(message = "Debe ingresar su nombre completo")
-	@NotBlank(message = "No puede estar en blanco")
 	private int CDNI;
 
 	@NotEmpty(message = "Debe ingresar su nombre completo")
@@ -43,8 +41,8 @@ public class Usuario implements Serializable {
 
 	@NotEmpty(message = "Debe ingresar su contraseña completa")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "CContraseña", nullable = false, length = 10)
-	private String CContraseña;
+	@Column(name = "CContrasena", nullable = false, length = 10)
+	private String CContrasena;
 
 	@NotNull
 	@Past(message = "No puedes seleccionar un dia que no existe")
@@ -81,12 +79,12 @@ public class Usuario implements Serializable {
 		TCorreo = tCorreo;
 	}
 
-	public String getCContraseña() {
-		return CContraseña;
+	public String getCContrasena() {
+		return CContrasena;
 	}
 
-	public void setCContraseña(String cContraseña) {
-		CContraseña = cContraseña;
+	public void setCContrasena(String cContrasena) {
+		CContrasena = cContrasena;
 	}
 
 	public Date getFNacimiento() {

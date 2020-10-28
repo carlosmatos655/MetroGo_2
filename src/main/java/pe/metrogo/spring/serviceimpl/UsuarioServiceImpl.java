@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.metrogo.spring.entity.Usuario;
 import pe.metrogo.spring.repository.IUsuarioRepository;
 import pe.metrogo.spring.service.IUsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements IUsuarioService{
 
 	@Autowired

@@ -12,6 +12,6 @@ import pe.metrogo.spring.entity.EntidadBancaria;
 @Repository
 public interface IEntidadBancariaRepository extends JpaRepository<EntidadBancaria,Integer>{
 	
-	@Query("From Entidad n where n.NEntidad like %:NEntidad%")
+	@Query("from EntidadBancaria n where n.NEntidad like %:NEntidad%")
 	List<EntidadBancaria> buscarEntidadBancaria(@Param("NEntidad")String NEntidad);
 }

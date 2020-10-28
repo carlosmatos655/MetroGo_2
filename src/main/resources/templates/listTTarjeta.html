@@ -5,7 +5,7 @@
 		
 		<meta charset="UTF-8"></meta>
 		
-		<title>Nacionalidades</title>
+		<title>Tarjeta de Credito/Debito</title>
 		
 		<script type="text/javascript"
 			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -34,13 +34,13 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column" >
 						
-						<a  style="border-bottom-color: green" th:href="@{/nacionalidad/irRegistrar}" id="add-row" 
+						<a  style="border-bottom-color: blue" th:href="@{/ttarjeta/irRegistrar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
-							class="glyphicon glyphicon-plus" ></span> Nacionalidad
+							class="glyphicon glyphicon-plus" ></span> Agregar Tarjeta
 						</a>
 						
-						<a  style="border-bottom-color: green" th:href="@{/nacionalidad/irBuscar}" id="add-row" 
+						<a  style="border-bottom-color: blue" th:href="@{/ttarjeta/irBuscar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
 							class="glyphicon glyphicon-search" ></span> Buscar
@@ -50,17 +50,17 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
-									<th class="text-center">NACIONALIDAD</th>
+									<th class="text-center">TIPO DE TARJETA</th>
 									<th class="text-center">OPERACIÓN</th>
 									<th class="text-center">OPERACIÓN</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="nac: ${listaNacionalidades}">
-									<td th:text="${nac.CNacionalidad}"></td>
-									<td th:text="${nac.NNacionalidad}"></td>
-									<td><a th:href="@{/nacionalidad/eliminar?id=}+${nac.CNacionalidad}">Eliminar</a></td>
-									<td><a th:href="@{'/nacionalidad/modificar/' + ${nac.CNacionalidad}}">Modificar</a></td>
+								<tr th:each="nac: ${listaTTarjetas}">
+									<td th:text="${nac.CTarjeta}"></td>
+									<td th:text="${nac.NTitular}"></td>
+									<td><a th:href="@{/ttarjeta/eliminar?id=}+${nac.CTarjeta}">Eliminar Tarjeta</a></td>
+									<td><a th:href="@{'/ttarjeta/modificar/' + ${nac.CTarjeta}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

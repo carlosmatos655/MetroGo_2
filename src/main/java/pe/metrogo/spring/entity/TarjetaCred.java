@@ -1,25 +1,33 @@
 package pe.metrogo.spring.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="tarjetacredito")
+@Table(name = "tarjetacredito")
 
 public class TarjetaCred {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CTarjeta;
-		
-	@NotEmpty(message="Debe ingresar un titular")
-	@Column(name="NTitular", nullable=false, length=30)
-	private String NTitular;
+
+	@ManyToOne
+	@JoinColumn(name = "CEntidad", nullable = false)
+	private EntidadBancaria entidad;
+
+	@ManyToOne
+	@JoinColumn(name = "CTTarjeta", nullable = false)
+	private TipotarjetaCred ttarjeta;
+
+	@ManyToOne
+	@JoinColumn(name = "CDNI", nullable = false)
+	private Usuario usuario;
 
 	public int getCTarjeta() {
 		return CTarjeta;
@@ -29,14 +37,28 @@ public class TarjetaCred {
 		CTarjeta = cTarjeta;
 	}
 
-	public String getNTitular() {
-		return NTitular;
+	public EntidadBancaria getEntidad() {
+		return entidad;
 	}
 
-	public void setNTitular(String nTitular) {
-		NTitular = nTitular;
+	public void setEntidad(EntidadBancaria entidad) {
+		this.entidad = entidad;
 	}
-	
-	
+
+	public TipotarjetaCred getTtarjeta() {
+		return ttarjeta;
+	}
+
+	public void setTtarjeta(TipotarjetaCred ttarjeta) {
+		this.ttarjeta = ttarjeta;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 }

@@ -5,7 +5,7 @@
 		
 		<meta charset="ISO-8859-1"></meta>
 		
-		<title>TTarjeta</title>
+		<title>Nacionalidad</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -26,19 +26,19 @@
 		<div th:replace="fragments/header :: header"></div>
 		
 		<div class="container">
-			<form th:action="@{/ttarjeta/registrar}" method="post" th:object="${ttarjeta}">
+			<form th:action="@{/nacionalidad/registrar}" method="post" th:object="${nacionalidad}">
 				<div class="form-group">
 					
-					<label for="CTTarjeta">CODIGO:</label> 
-					<input type="text" class="form-control" th:field="*{CTTarjeta}"></input>
+					<label for="CNacionalidad">CODIGO:</label> 
+					<input type="text" class="form-control" th:field="*{CNacionalidad}"></input>
 					
 					<div class="form-group">
 					
 						<label 	for="nombre">NOMBRE:</label> 
-						<input type="text" th:field="*{NTTarjeta}" class="form-control" id="nombre"></input>
+						<input type="text" th:field="*{NNacionalidad}" class="form-control" id="nombre"></input>
 	
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('NTTarjeta')}" 
-							th:errors="*{NTTarjeta}">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NNacionalidad')}" 
+							th:errors="*{NNacionalidad}">
 						</div>
 						
 					</div>
@@ -46,7 +46,7 @@
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Aceptar</button>
-				<a href="/ttarjeta/listar" class="btn btn-danger">Cancelar</a>
+				<a href="/nacionalidad/listar" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
 	

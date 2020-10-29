@@ -5,7 +5,7 @@
 		
 		<meta charset="UTF-8"></meta>
 		
-		<title>Tipo de Tarjetas</title>
+		<title>Tipos de Tarjeta Metropolitano</title>
 		
 		<script type="text/javascript"
 			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -34,13 +34,13 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column" >
 						
-						<a  style="border-bottom-color: green" th:href="@{/ttarjeta/irRegistrar}" id="add-row" 
+						<a  style="border-bottom-color: green" th:href="@{/ttarjetametro/irRegistrar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
-							class="glyphicon glyphicon-plus" ></span> Tipo de Tarjeta
+							class="glyphicon glyphicon-plus" ></span> Tipo De Tarjeta Metropolitano
 						</a>
 						
-						<a  style="border-bottom-color: green" th:href="@{/ttarjeta/irBuscar}" id="add-row" 
+						<a  style="border-bottom-color: green" th:href="@{/ttarjetametro/irBuscar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
 							class="glyphicon glyphicon-search" ></span> 
@@ -50,17 +50,17 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
-									<th class="text-center">TIPO DE TARJETA</th>
+									<th class="text-center">TIPO DE TARJETA METROPOLITANO</th>
 									<th class="text-center">OPERACIÓN</th>
 									<th class="text-center">OPERACIÓN</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="tta: ${listaTTarjetas}">
-									<td th:text="${tta.CTTarjeta}"></td>
-									<td th:text="${tta.NTTarjeta}"></td>
-									<td><a th:href="@{/ttarjeta/eliminar?id=}+${tta.CTTarjeta}">Eliminar</a></td>
-									<td><a th:href="@{'/ttarjeta/modificar/' + ${tta.CTTarjeta}}">Modificar</a></td>
+								<tr th:each="tta: ${listaTTarjetasMetro}">
+									<td th:text="${tta.CTTarjetaMetro}"></td>
+									<td th:text="${tta.NTTarjetaMetro}"></td>
+									<td><a th:href="@{/ttarjetametro/eliminar?id=}+${tta.CTTarjetaMetro}">Eliminar</a></td>
+									<td><a th:href="@{'/ttarjetametro/modificar/' + ${tta.CTTarjetaMetro}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

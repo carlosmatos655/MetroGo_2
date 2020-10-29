@@ -1,7 +1,6 @@
 package pe.metrogo.spring.entity;
 
 import java.util.Date;
-import java.util.Timer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,12 +34,6 @@ public class Recarga {
 	private Date DFecha;
 	
 	@NotNull
-	@Past(message="No puedes seleccionar una hora que no existe")
-	@Temporal(TemporalType.TIME)
-	@Column(name="DHora")
-	private Timer DHora;
-	
-	@NotNull
 	@Past(message="No puede dejar este espacio en blanco ingresar monto a recargar")
 	@Column(name="MMonto")
 	private double Monto;
@@ -67,14 +60,6 @@ public class Recarga {
 
 	public void setDFecha(Date dFecha) {
 		DFecha = dFecha;
-	}
-
-	public Timer getDHora() {
-		return DHora;
-	}
-
-	public void setDHora(Timer dHora) {
-		DHora = dHora;
 	}
 
 	public double getMonto() {

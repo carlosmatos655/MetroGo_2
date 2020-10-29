@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,15 +29,7 @@ public class TarjetaMetropolitano {
 	@Column(name="DVencimiento")
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private Date DVencimiento;
-	
-	@ManyToOne
-	@JoinColumn(name = "CDNI", nullable = false)
-	private Usuario usuario;
-	
-	@ManyToOne
-	@JoinColumn(name = "CTTarjetaMetro", nullable = false)
-	private TipotarjetaMtro tipotarjetametro;
-	
+
 	public int getCTarjetaMetro() {
 		return CTarjetaMetro;
 	}
@@ -56,19 +46,6 @@ public class TarjetaMetropolitano {
 		DVencimiento = dVencimiento;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
+	
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public TipotarjetaMtro getTipotarjetaMtro() {
-		return tipotarjetametro;
-	}
-
-	public void setTipotarjetaMtro(TipotarjetaMtro tipotarjetametro) {
-		this.tipotarjetametro = tipotarjetametro;
-	}
 }

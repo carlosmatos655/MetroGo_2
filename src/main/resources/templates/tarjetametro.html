@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="ISO-8859-1"></meta>
+		
+		<title>TarjetaMetropolitano</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/tarjeta/registrar}" method="post" th:object="${tarjeta}">
+				<div class="form-group">
+					
+					<label for="CTarjetaMetro">CODIGO TARJETA METROPOLITANO:</label> 
+					<input type="text" class="form-control" th:field="*{CTarjetaMetro}"></input>
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('CTarjetaMetro')}" 
+							th:errors="*{CTarjetaMetro}">
+						</div>
+					
+					<div class="form-group">
+					
+						<label 	for="DVencimiento">FECHA VENCIMIENTO:</label> 
+						<input type="text" th:field="*{DVencimiento}" class="form-control" id="DVencimiento"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('DVencimiento')}" 
+							th:errors="*{DVencimiento}">
+						</div>
+					</div>
+					
+					<label for="ttarjeta" class=" col-sm-2 col-form-label">TIPO DE TARJETA: </label>
+					<select
+						class="form-control" th:field="*{ttarjeta.CTTarjeta}">
+						<option th:each="tt: ${listaTTarjetas}" th:value="${tt.CTTarjeta}"
+							th:text="${tt.NTTarjeta}"
+							th:selected="(${tt.CTTarjeta} == *{ttarjeta.CTTarjeta})"></option>
+					</select>
+					
+					<label for="usuario" class=" col-sm-2 col-form-label">USUARIO: </label>
+					<select
+						class="form-control" th:field="*{usuario.CDNI}">
+						<option th:each="u: ${listaUsuarios}" th:value="${u.CDNI}"
+							th:text="${u.NNombreyApellido}"
+							th:selected="(${u.CDNI} == *{usuario.CDNI})"></option>
+					</select>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/tarjeta/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>

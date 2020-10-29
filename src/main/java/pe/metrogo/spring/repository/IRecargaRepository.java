@@ -17,4 +17,5 @@ public interface IRecargaRepository extends JpaRepository<Recarga, Integer> {
 
 	@Query("From Promocion t where t.promocion.NPromocion like %:NPromocion%")
 	List<Recarga> buscarPromocion(@Param("NPromocion")String NPromocion);
+	
 }

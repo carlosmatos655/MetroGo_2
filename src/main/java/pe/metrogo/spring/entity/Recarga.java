@@ -1,4 +1,3 @@
-/*
 package pe.metrogo.spring.entity;
 
 import java.util.Date;
@@ -21,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="recarga")
 
 public class Recarga {
-	/*
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CRecarga;
@@ -75,8 +74,4 @@ public class Recarga {
 	public void setMonto(double monto) {
 		Monto = monto;
 	}
-	
-	
-
 }
-	*/

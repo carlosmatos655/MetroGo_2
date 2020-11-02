@@ -12,17 +12,17 @@ import pe.metrogo.spring.repository.ITarjetaMetropolitanoRepository;
 import pe.metrogo.spring.service.ITarjetaMetropolitanoService;
 
 @Service
-public class TarjetaMetropolitanoServiceImpl implements ITarjetaMetropolitanoService{
-	
+public class TarjetaMetropolitanoServiceImpl implements ITarjetaMetropolitanoService {
+
 	@Autowired
 	private ITarjetaMetropolitanoRepository dTMetro;
-
+	
 	@Override
 	@Transactional
 	public boolean insertar(TarjetaMetropolitano tmetro) {
 		// TODO Auto-generated method stub
 		TarjetaMetropolitano objTMetro = dTMetro.save(tmetro);
-		if(objTMetro == null)
+		if (objTMetro == null)
 			return false;
 		else
 			return true;
@@ -35,7 +35,7 @@ public class TarjetaMetropolitanoServiceImpl implements ITarjetaMetropolitanoSer
 		try {
 			dTMetro.save(tmetro);
 			flag = true;
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Sucedio un error");
 		}
 		return flag;
@@ -61,5 +61,11 @@ public class TarjetaMetropolitanoServiceImpl implements ITarjetaMetropolitanoSer
 		// TODO Auto-generated method stub
 		return dTMetro.findAll();
 	}
-	
+
+	@Override
+	@Transactional
+	public List<TarjetaMetropolitano> buscarTarjetaMetropolitano(String NumTMetro) {
+		// TODO Auto-generated method stub
+		return dTMetro.buscarTarjetaMetropolitano(NumTMetro);
+	}
 }

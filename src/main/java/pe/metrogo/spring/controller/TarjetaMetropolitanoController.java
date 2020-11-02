@@ -1,6 +1,7 @@
 package pe.metrogo.spring.controller;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -17,7 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.metrogo.spring.entity.TarjetaMetropolitano;
+import pe.metrogo.spring.entity.TipotarjetaMtro;
+import pe.metrogo.spring.entity.Usuario;
 import pe.metrogo.spring.service.ITarjetaMetropolitanoService;
+import pe.metrogo.spring.service.ITipotarjetaMtroService;
+import pe.metrogo.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/tmetro")
@@ -25,6 +30,12 @@ public class TarjetaMetropolitanoController {
 
 	@Autowired
 	private ITarjetaMetropolitanoService tService;
+	
+	@Autowired
+	private IUsuarioService uService;
+	
+	@Autowired
+	private ITipotarjetaMtroService ttService;
 
 	@RequestMapping("/")
 	public String irTarjetaMetropolitano(Map<String, Object> model) {
@@ -34,6 +45,10 @@ public class TarjetaMetropolitanoController {
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
+		model.addAttribute("listaUsuarios", uService.listar());
+		model.addAttribute("listaTTarjetasMetro", ttService.listar());
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("ttarjetametro", new TipotarjetaMtro());
 		model.addAttribute("tmetro", new TarjetaMetropolitano());
 		return "tmetro";
 	}
@@ -42,6 +57,8 @@ public class TarjetaMetropolitanoController {
 	public String registrar(@ModelAttribute @Valid TarjetaMetropolitano objTMetro, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
+			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaTTarjetasMetro", ttService.listar());
 			return "tmetro";
 		} else {
 			boolean flag = tService.insertar(objTMetro);
@@ -61,7 +78,10 @@ public class TarjetaMetropolitanoController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/tmetro/listar";
 		} else {
-			model.addAttribute("tmetro", objTMetro);
+			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaTTarjetasMetro", ttService.listar());
+			if (objTMetro.isPresent())
+				objTMetro.ifPresent(t -> model.addAttribute("tmtro", t));
 			return "tmetro";
 		}
 	}
@@ -93,23 +113,22 @@ public class TarjetaMetropolitanoController {
 		return "listTMetro";
 	}
 	
-	/*
 	@RequestMapping("/buscar")
 	public String buscar(Map<String, Object> model, @ModelAttribute TarjetaMetropolitano tmetro) throws ParseException {
 		List<TarjetaMetropolitano> listaTMetros;
-		tmetro.setDVencimiento(tmetro.getCTarjetaMetro());
-		listaNacionalidades = nService.buscarNacionalidad(nacionalidad.getNNacionalidad());
-		if (listaNacionalidades.isEmpty()) {
+		tmetro.setNumTMetro(tmetro.getNumTMetro());
+		listaTMetros = tService.buscarTarjetaMetropolitano(tmetro.getNumTMetro());
+		if (listaTMetros.isEmpty()) {
 			model.put("mensaje", "No se encontro");
 		}
-		model.put("ListaNacionalidades", listaNacionalidades);
+		model.put("ListaTMetros", listaTMetros);
 		return "buscar";
 	}
 
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
-		model.addAttribute("nacionalidad", new Nacionalidad());
-		return "nacionalidad";
+		model.addAttribute("tmetro", new TarjetaMetropolitano());
+		return "tmetro";
 	}
-	*/
+
 }

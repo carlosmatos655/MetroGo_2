@@ -17,33 +17,35 @@ import javax.validation.constraints.Past;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="promocion")
+@Table(name = "promocion")
 
 public class Promocion {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CPromocion;
-	
-	@NotEmpty(message="Debe ingresar el nombre de la promoción")
-	@Column(name="NPromocion", nullable=false, length=30)
+
+	@NotEmpty(message = "Debe ingresar el nombre de la promoción")
+	@Column(name = "NPromocion", nullable = false, length = 30)
 	private String NPromocion;
-	
-	@Column(name="TDescripcion", nullable=false, length=70)
+
+	@Column(name = "TDescripcion", nullable = false, length = 70)
 	private String TDescripcion;
-	
+
+	private double MDescuento;
+
 	@NotNull
-	@Past(message="Ingresar una fecha de inicio de la promoción")
+	@Past(message = "Ingresar una fecha de inicio de la promoción")
 	@Temporal(TemporalType.DATE)
-	@Column(name="DInicio")
-	@DateTimeFormat(pattern= "yyyy-MM-dd")
+	@Column(name = "DInicio")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DInicio;
-	
+
 	@NotNull
-	@Past(message="Ingresar una fecha de fin de la promoción")
+	@Past(message = "Ingresar una fecha de fin de la promoción")
 	@Temporal(TemporalType.DATE)
-	@Column(name="DFin")
-	@DateTimeFormat(pattern= "yyyy-MM-dd")
+	@Column(name = "DFin")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DFin;
 
 	public int getCPromocion() {
@@ -69,6 +71,14 @@ public class Promocion {
 	public void setTDescripcion(String tDescripcion) {
 		TDescripcion = tDescripcion;
 	}
+	
+	public double getMDescuento() {
+		return MDescuento;
+	}
+
+	public void setMDescuento(double mDescuento) {
+		MDescuento = mDescuento;
+	}
 
 	public Date getDInicio() {
 		return DInicio;
@@ -85,7 +95,5 @@ public class Promocion {
 	public void setDFin(Date dFin) {
 		DFin = dFin;
 	}
-	
-	
 
 }

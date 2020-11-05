@@ -34,10 +34,7 @@ public class Recarga {
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private Date DFecha;
 	
-	@NotNull
-	@Past(message="No puede dejar este espacio en blanco ingresar monto a recargar")
-	@Column(name="MMonto")
-	private double Monto;
+	private double MMonto;
 
 	@ManyToOne
 	@JoinColumn(name = "CPromocion", nullable = false)
@@ -63,12 +60,12 @@ public class Recarga {
 		DFecha = dFecha;
 	}
 
-	public double getMonto() {
-		return Monto;
+	public double getMMonto() {
+		return MMonto;
 	}
 
-	public void setMonto(double monto) {
-		Monto = monto;
+	public void setMMonto(double mMonto) {
+		MMonto = mMonto;
 	}
 
 	public Promocion getPromocion() {

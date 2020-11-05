@@ -51,6 +51,7 @@
 								<tr>
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">PROMOCION</th>
+									<th class="text-center">DESCUENTO</th>
 									<th class="text-center">FECHA INICIO</th>
 									<th class="text-center">FECHA FIN</th>
 									<th class="text-center">DESCRIPCION</th>
@@ -62,6 +63,7 @@
 								<tr th:each="pro: ${listaPromociones}">
 									<td th:text="${pro.CPromocion}"></td>
 									<td th:text="${pro.NPromocion}"></td>
+									<td th:text="${pro.MDescuento}"></td>
 									<td th:text="${pro.DInicio}"></td>
 									<td th:text="${pro.DFin}"></td>
 									<td th:text="${pro.TDescripcion}"></td>

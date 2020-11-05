@@ -12,5 +12,4 @@ public interface IRecargaService {
 	public void eliminar(int CRecarga);
 	public Optional<Recarga> listarId(int CRecarga);
 	List<Recarga> listar();
-	List<Recarga> buscarPromocion(String NPromocion);
 }

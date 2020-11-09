@@ -44,8 +44,8 @@ public class RecargaController {
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
-		model.addAttribute("listPromociones", pService.listar());
-		model.addAttribute("listTMetros", tService.listar());
+		model.addAttribute("listaPromociones", pService.listar());
+		model.addAttribute("listaTMetros", tService.listar());
 		model.addAttribute("promocion", new Promocion());
 		model.addAttribute("tmetro", new TarjetaMetropolitano());
 		model.addAttribute("recarga", new Recarga());
@@ -56,8 +56,8 @@ public class RecargaController {
 	public String registrar(@ModelAttribute @Valid Recarga objRecarga, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			model.addAttribute("listPromociones", pService.listar());
-			model.addAttribute("listTMetros", tService.listar());
+			model.addAttribute("listaPromociones", pService.listar());
+			model.addAttribute("listaTMetros", tService.listar());
 			return "recarga";
 		} else {
 			boolean flag = rService.insertar(objRecarga);
@@ -77,8 +77,8 @@ public class RecargaController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/recarga/listar";
 		} else {
-			model.addAttribute("listPromociones", pService.listar());
-			model.addAttribute("listTMetros", tService.listar());
+			model.addAttribute("listaPromociones", pService.listar());
+			model.addAttribute("listaTMetros", tService.listar());
 			if (objRecarga.isPresent())
 				objRecarga.ifPresent(r -> model.addAttribute("recarga", r));
 			return "recarga";

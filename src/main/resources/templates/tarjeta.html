@@ -45,12 +45,12 @@
 						</div>
 					</div>
 					
-					<label for="usuario" class=" col-sm-2 col-form-label">USUARIO: </label>
+					<label for="cliente" class=" col-sm-2 col-form-label">CLIENTE: </label>
 					<select
-						class="form-control" th:field="*{usuario.CDNI}">
-						<option th:each="u: ${listaUsuarios}" th:value="${u.CDNI}"
-							th:text="${u.NNombreyApellido}"
-							th:selected="(${u.CDNI} == *{usuario.CDNI})"></option>
+						class="form-control" th:field="*{cliente.CCliente}">
+						<option th:each="c: ${listaClientes}" th:value="${c.CCliente}"
+							th:text="${c.NNombreyApellido}"
+							th:selected="(${c.CCliente} == *{cliente.CCliente})"></option>
 					</select>
 					
 					<label for="entidad" class=" col-sm-2 col-form-label">ENTIDAD: </label>

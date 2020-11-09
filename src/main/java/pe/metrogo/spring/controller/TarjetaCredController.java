@@ -19,11 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pe.metrogo.spring.entity.EntidadBancaria;
 import pe.metrogo.spring.entity.TarjetaCred;
 import pe.metrogo.spring.entity.TipotarjetaCred;
-import pe.metrogo.spring.entity.Usuario;
+import pe.metrogo.spring.entity.Cliente;
+import pe.metrogo.spring.service.IClienteService;
 import pe.metrogo.spring.service.IEntidadBancariaService;
 import pe.metrogo.spring.service.ITarjetaCredService;
 import pe.metrogo.spring.service.ITipotarjetaCredService;
-import pe.metrogo.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/tarjeta")
@@ -33,7 +33,7 @@ public class TarjetaCredController {
 	private ITarjetaCredService tService;
 
 	@Autowired
-	private IUsuarioService uService;
+	private IClienteService cService;
 
 	@Autowired
 	private ITipotarjetaCredService iService;
@@ -49,11 +49,11 @@ public class TarjetaCredController {
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
-		model.addAttribute("listaUsuarios", uService.listar());
+		model.addAttribute("listaClientes", cService.listar());
 		model.addAttribute("listaEntidades", eService.listar());
 		model.addAttribute("listaTTarjetas", iService.listar());
 		model.addAttribute("tarjeta", new TarjetaCred());
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("cliente", new Cliente());
 		model.addAttribute("entidad", new EntidadBancaria());
 		model.addAttribute("ttarjeta", new TipotarjetaCred());
 		return "tarjeta";
@@ -63,7 +63,7 @@ public class TarjetaCredController {
 	public String registrar(@ModelAttribute @Valid TarjetaCred objTarjeta, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaEntidades", eService.listar());
 			model.addAttribute("listaTTarjetas", iService.listar());
 			return "tarjeta";
@@ -85,7 +85,7 @@ public class TarjetaCredController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/tarjeta/listar";
 		} else {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaEntidades", eService.listar());
 			model.addAttribute("listaTTarjetas", iService.listar());
 			if (objTarjeta.isPresent())

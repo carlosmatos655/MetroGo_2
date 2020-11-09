@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.metrogo.spring.entity.Cliente;
 import pe.metrogo.spring.entity.TarjetaMetropolitano;
 import pe.metrogo.spring.entity.TipotarjetaMtro;
-import pe.metrogo.spring.entity.Usuario;
+import pe.metrogo.spring.service.IClienteService;
 import pe.metrogo.spring.service.ITarjetaMetropolitanoService;
 import pe.metrogo.spring.service.ITipotarjetaMtroService;
-import pe.metrogo.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/tmetro")
@@ -32,7 +32,7 @@ public class TarjetaMetropolitanoController {
 	private ITarjetaMetropolitanoService tService;
 	
 	@Autowired
-	private IUsuarioService uService;
+	private IClienteService cService;
 	
 	@Autowired
 	private ITipotarjetaMtroService ttService;
@@ -45,9 +45,9 @@ public class TarjetaMetropolitanoController {
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
-		model.addAttribute("listaUsuarios", uService.listar());
+		model.addAttribute("listaClientes", cService.listar());
 		model.addAttribute("listaTTarjetasMetro", ttService.listar());
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("cliente", new Cliente());
 		model.addAttribute("ttarjetametro", new TipotarjetaMtro());
 		model.addAttribute("tmetro", new TarjetaMetropolitano());
 		return "tmetro";
@@ -57,7 +57,7 @@ public class TarjetaMetropolitanoController {
 	public String registrar(@ModelAttribute @Valid TarjetaMetropolitano objTMetro, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaTTarjetasMetro", ttService.listar());
 			return "tmetro";
 		} else {
@@ -78,7 +78,7 @@ public class TarjetaMetropolitanoController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/tmetro/listar";
 		} else {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaTTarjetasMetro", ttService.listar());
 			if (objTMetro.isPresent())
 				objTMetro.ifPresent(t -> model.addAttribute("tmtro", t));

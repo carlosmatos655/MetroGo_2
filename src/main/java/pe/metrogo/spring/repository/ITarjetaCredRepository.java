@@ -12,8 +12,8 @@ import pe.metrogo.spring.entity.TarjetaCred;
 @Repository
 public interface ITarjetaCredRepository extends JpaRepository<TarjetaCred, Integer> {
 
-	@Query("From TarjetaCred t where t.usuario.NNombreyApellido like %:NNombreyApellido%")
-	List<TarjetaCred> buscarUsuario(@Param("NNombreyApellido") String NNombreyApellido);
+	@Query("From TarjetaCred t where t.cliente.NNombreyApellido like %:NNombreyApellido%")
+	List<TarjetaCred> buscarCliente(@Param("NNombreyApellido") String NNombreyApellido);
 
 	@Query("From TarjetaCred t where t.entidad.NEntidad like %:NEntidad%")
 	List<TarjetaCred> buscarEntidadBancaria(@Param("NEntidad")String NEntidad);

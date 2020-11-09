@@ -5,7 +5,7 @@
 		
 		<meta charset="ISO-8859-1"></meta>
 		
-		<title>Usuario</title>
+		<title>Cliente</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -26,14 +26,24 @@
 		<div th:replace="fragments/header :: header"></div>
 		
 		<div class="container">
-			<form th:action="@{/usuario/registrar}" method="post" th:object="${usuario}">
+			<form th:action="@{/cliente/registrar}" method="post" th:object="${cliente}">
 				<div class="form-group">
 					
-					<label for="CDNI">DNI:</label> 
-					<input type="text" class="form-control" th:field="*{CDNI}"></input>
-					<div class="alert alert-danger" th:if="${#fields.hasErrors('CDNI')}" 
-							th:errors="*{CDNI}">
+					<label for="CCliente">CODIGO:</label> 
+					<input type="text" class="form-control" th:field="*{CCliente}"></input>
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('CCliente')}" 
+							th:errors="*{CCliente}">
 						</div>
+						
+					<div class="form-group">
+					
+						<label 	for="numdni">DNI:</label> 
+						<input type="text" th:field="*{NumDNI}" class="form-control" id="numdni"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NumDNI')}" 
+							th:errors="*{NumDNI}">
+						</div>
+					</div>
 					
 					<div class="form-group">
 					
@@ -52,16 +62,6 @@
 	
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('TCorreo')}" 
 							th:errors="*{TCorreo}">
-						</div>
-					</div>
-					
-					<div class="form-group">
-					
-						<label 	for="CContrasena">CONTRASENA:</label> 
-						<input type="password" th:field="*{CContrasena}" class="form-control" id="CContrasena"></input>
-	
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('CContrasena')}" 
-							th:errors="*{CContrasena}">
 						</div>
 					</div>
 					
@@ -84,7 +84,7 @@
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Aceptar</button>
-				<a href="/usuario/listar" class="btn btn-danger">Cancelar</a>
+				<a href="/cliente/listar" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
 	

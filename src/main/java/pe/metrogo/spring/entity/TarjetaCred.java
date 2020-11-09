@@ -35,7 +35,7 @@ public class TarjetaCred {
 
 	@ManyToOne
 	@JoinColumn(name = "CDNI", nullable = false)
-	private Usuario usuario;
+	private Cliente cliente;
 	
 	public int getCTarjeta() {
 		return CTarjeta;
@@ -69,12 +69,11 @@ public class TarjetaCred {
 		this.ttarjeta = ttarjeta;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-
 }

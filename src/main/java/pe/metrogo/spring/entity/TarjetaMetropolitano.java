@@ -38,8 +38,8 @@ public class TarjetaMetropolitano {
 	private Date DVencimiento;
 
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
-	private Usuario usuario;
+	@JoinColumn(name = "CCliente", nullable = false)
+	private Cliente cliente;
 
 	@ManyToOne
 	@JoinColumn(name = "CTTarjetaMetro", nullable = false)
@@ -69,12 +69,12 @@ public class TarjetaMetropolitano {
 		DVencimiento = dVencimiento;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public TipotarjetaMtro getTtarjetametro() {

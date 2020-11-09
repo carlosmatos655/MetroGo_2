@@ -51,7 +51,7 @@
 								<tr>
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">NUMTARJETA</th>
-									<th class="text-center">USUARIO</th>
+									<th class="text-center">CLIENTE</th>
 									<th class="text-center">ENTIDAD</th>
 									<th class="text-center">TTARJETA</th>
 									<th class="text-center">OPERACIÓN</th>
@@ -62,7 +62,7 @@
 								<tr th:each="tar: ${listaTarjetas}">
 									<td th:text="${tar.CTarjeta}"></td>
 									<td th:text="${tar.NumTarjeta}"></td>
-									<td th:text="${tar.usuario.NNombreyApellido}"></td>
+									<td th:text="${tar.cliente.NNombreyApellido}"></td>
 									<td th:text="${tar.entidad.NEntidad}"></td>
 									<td th:text="${tar.ttarjeta.NTTarjeta}"></td>
 									<td><a th:href="@{/tarjeta/eliminar?id=}+${tar.CTarjeta}">Eliminar</a></td>

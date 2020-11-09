@@ -5,7 +5,7 @@
 		
 		<meta charset="UTF-8"></meta>
 		
-		<title>Usuarios</title>
+		<title>Clientes</title>
 		
 		<script type="text/javascript"
 			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -34,13 +34,13 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column" >
 						
-						<a  style="border-bottom-color: green" th:href="@{/usuario/irRegistrar}" id="add-row" 
+						<a  style="border-bottom-color: green" th:href="@{/cliente/irRegistrar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
-							class="glyphicon glyphicon-plus" ></span> Usuario
+							class="glyphicon glyphicon-plus" ></span> Cliente
 						</a>
 						
-						<a  style="border-bottom-color: green" th:href="@{/usuario/irBuscar}" id="add-row" 
+						<a  style="border-bottom-color: green" th:href="@{/cliente/irBuscar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
 							class="glyphicon glyphicon-search" ></span> 
@@ -50,9 +50,9 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
+									<th class="text-center">DNI</th>
 									<th class="text-center">USUARIO</th>
 									<th class="text-center">CORREO</th>
-									<th class="text-center">CONTRASENA</th>
 									<th class="text-center">FNACIMIENTO</th>
 									<th class="text-center">NACIONALIDAD</th>
 									<th class="text-center">OPERACIÓN</th>
@@ -60,15 +60,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="usu: ${listaUsuarios}">
-									<td th:text="${usu.CDNI}"></td>
-									<td th:text="${usu.NNombreyApellido}"></td>
-									<td th:text="${usu.TCorreo}"></td>
-									<td th:password="${usu.CContrasena}"></td>
-									<td th:text="${#dates.format(usu.FNacimiento,'dd/MM/yyyy')}"></td>
-									<td th:text="${usu.nacionalidad.NNacionalidad}"></td>
-									<td><a th:href="@{/usuario/eliminar?id=}+${usu.CDNI}">Eliminar</a></td>
-									<td><a th:href="@{'/usuario/modificar/' + ${usu.CDNI}}">Modificar</a></td>
+								<tr th:each="cli: ${listaClientes}">
+									<td th:text="${cli.CCliente}"></td>
+									<td th:text="${cli.NumDNI}"></td>
+									<td th:text="${cli.NNombreyApellido}"></td>
+									<td th:text="${cli.TCorreo}"></td>
+									<td th:text="${#dates.format(cli.FNacimiento,'dd/MM/yyyy')}"></td>
+									<td th:text="${cli.nacionalidad.NNacionalidad}"></td>
+									<td><a th:href="@{/cliente/eliminar?id=}+${cli.CCliente}">Eliminar</a></td>
+									<td><a th:href="@{'/cliente/modificar/' + ${cli.CCliente}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

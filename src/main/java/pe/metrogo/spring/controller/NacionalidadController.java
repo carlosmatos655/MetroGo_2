@@ -108,12 +108,12 @@ public class NacionalidadController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("ListaNacionalidades", listaNacionalidades);
-		return "buscar";
+		return "listNacionalidad";
 	}
 
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("nacionalidad", new Nacionalidad());
-		return "nacionalidad";
+		return "Bnacionalidad";
 	}
 }

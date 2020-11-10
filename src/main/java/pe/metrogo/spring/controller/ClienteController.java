@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pe.metrogo.spring.entity.Nacionalidad;
 import pe.metrogo.spring.entity.Cliente;
-import pe.metrogo.spring.service.INacionalidadService;
+import pe.metrogo.spring.entity.Nacionalidad;
+import pe.metrogo.spring.entity.Usuario;
 import pe.metrogo.spring.service.IClienteService;
+import pe.metrogo.spring.service.INacionalidadService;
+import pe.metrogo.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/cliente")
@@ -31,6 +33,9 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService cService;
+	
+	@Autowired
+	private IUsuarioService uService;
 
 	@RequestMapping("/")
 	public String irCliente(Map<String, Object> model) {
@@ -43,16 +48,19 @@ public class ClienteController {
 		model.addAttribute("listaNacionalidades", nService.listar());
 		model.addAttribute("nacionalidad", new Nacionalidad());
 		model.addAttribute("cliente", new Cliente());
+		model.addAttribute("usuario", new Usuario());
 		return "cliente";
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid Cliente objCliente, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute @Valid Cliente objCliente, @ModelAttribute @Valid Usuario objUsuario, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaNacionalidades", nService.listar());
 			return "cliente";
 		} else {
+			objUsuario.setId(objCliente.getCCliente());
+			objCliente.setUsuario(objUsuario);
 			boolean flag = cService.insertar(objCliente);
 			if (flag) {
 				return "redirect:/cliente/listar";

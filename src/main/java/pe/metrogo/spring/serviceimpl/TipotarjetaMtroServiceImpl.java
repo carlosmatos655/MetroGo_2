@@ -64,9 +64,9 @@ public class TipotarjetaMtroServiceImpl implements ITipotarjetaMtroService{
 
 	@Override
 	@Transactional
-	public List<TipotarjetaMtro> buscarTipotarjetaMtro(String NNTarjetaMetro) {
+	public List<TipotarjetaMtro> findByNTTarjetaMetro(String NNTarjetaMetro) {
 		// TODO Auto-generated method stub
-		return dTTarjetaMetro.buscarTipotarjetaMtro(NNTarjetaMetro);
+		return dTTarjetaMetro.findByNTTarjetaMetro(NNTarjetaMetro);
 	}
 	
 }

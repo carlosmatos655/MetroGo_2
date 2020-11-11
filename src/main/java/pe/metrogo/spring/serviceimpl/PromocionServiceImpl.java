@@ -64,9 +64,9 @@ public class PromocionServiceImpl implements IPromocionService{
 
 	@Override
 	@Transactional
-	public List<Promocion> buscarPromocion(String NPromocion) {
+	public List<Promocion> findByNPromocion(String NPromocion) {
 		// TODO Auto-generated method stub
-		return dPromocion.buscarPromocion(NPromocion);
+		return dPromocion.findByNPromocion(NPromocion);
 	}
 	
 }

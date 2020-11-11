@@ -94,21 +94,21 @@ public class PromocionController {
 		return "listPromocion";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Promocion promocion) throws ParseException {
-		List<Promocion> listaPromociones;
+	@RequestMapping("/find")
+	public String findByNPromocion(Map<String, Object> model, @ModelAttribute Promocion promocion) throws ParseException {
+		List<Promocion> listaPromocion;
 		promocion.setNPromocion(promocion.getNPromocion());
-		listaPromociones = pService.buscarPromocion(promocion.getNPromocion());
-		if (listaPromociones.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaPromociones", listaPromociones);
-		return "buscar";
-	}
+		listaPromocion = pService.findByNPromocion(promocion.getNPromocion());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("promocion", new Promocion());
-		return "promocion";
+		if (listaPromocion.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaPromociones", listaPromocion );
+		return "listaPromociones";
+	}
+	
+	@ModelAttribute("nacionalidad")
+	public Promocion createModel() {
+	    return new Promocion();
 	}
 }

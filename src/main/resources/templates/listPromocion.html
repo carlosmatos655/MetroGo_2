@@ -30,7 +30,7 @@
 		<div th:replace="fragments/header :: header"></div>
 
 		<div class="container">
-			<form id="myform">
+			<div id="myform">
 				<div class="row clearfix">
 					<div class="col-md-12 column" >
 						
@@ -40,12 +40,28 @@
 							class="glyphicon glyphicon-plus" ></span> Promocion
 						</a>
 						
-						<a  style="border-bottom-color: green" th:href="@{/promocion/irBuscar}" id="add-row" 
-							type="button"
-							class="btn btn-primary btn-md left-block"> <span
-							class="glyphicon glyphicon-search" ></span> 
-						</a>
-						
+						<form th:action="@{/promocion/find}" method="post"
+						th:object="${promocion}">
+
+						<div class="form-group">
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="nombrePromocion"
+											class="col-sm-2 col-form-label">Promocion:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{NPromocion}" id="nombrePromocion"
+											placeholder="Nombre Promocion" required="required"></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/promocion/listar" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>				
+					
 						<table class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>
@@ -78,7 +94,7 @@
 			<div th:if="${mensaje}" class="alert alert-danger">
 				<p th:text="${mensaje}"></p>
 			</div>
-		</form>
+		</div>
 	</div>
 	
 	<div th:replace="fragments/footer :: footer"></div>

@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,8 +39,7 @@ public class Usuario implements Serializable{
 	private List<Role> roles;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @MapsId
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "id", nullable = false, updatable = false)
 	private Cliente cliente;
 
 	public int getId() {

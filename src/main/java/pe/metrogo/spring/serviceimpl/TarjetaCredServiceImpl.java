@@ -61,7 +61,7 @@ public class TarjetaCredServiceImpl implements ITarjetaCredService{
 
 	@Override
 	@Transactional
-	public List<TarjetaCred> findByNumTarjeta(String NumTarjeta) {		
-		return dTar.findByNumTarjeta(NumTarjeta);
+	public List<TarjetaCred> findByNumTarjeta(String numTarjeta) {		
+		return dTar.findByNumTarjeta(numTarjeta);
 	}
 }

@@ -125,7 +125,6 @@ public class ClienteController {
 		return "listCliente";
 	}
 	
-	/*
 	@RequestMapping("/findDNI")
 	public String findByNumDNI(Map<String, Object> model, @ModelAttribute Cliente cliente) throws ParseException {
 		List<Cliente> listaCliente;
@@ -138,7 +137,7 @@ public class ClienteController {
 		model.put("listaClientes", listaCliente );
 		return "listCliente";
 	}
-	*/
+
 	@ModelAttribute("cliente")
 	public Cliente createModel() {
 	    return new Cliente();

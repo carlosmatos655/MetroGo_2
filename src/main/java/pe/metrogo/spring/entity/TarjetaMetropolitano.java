@@ -29,7 +29,7 @@ public class TarjetaMetropolitano {
 	@NotEmpty(message = "Debe ingresar su numero de tarjeta completo")
 	@NotBlank(message = "No puede estar en blanco")
 	@Column(name = "NumTMetro", nullable = false, length = 10)
-	private String NumTMetro;
+	private String numTMetro;
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
@@ -52,13 +52,13 @@ public class TarjetaMetropolitano {
 	public void setCTarjetaMetro(int cTarjetaMetro) {
 		CTarjetaMetro = cTarjetaMetro;
 	}
-
+	
 	public String getNumTMetro() {
-		return NumTMetro;
+		return numTMetro;
 	}
 
 	public void setNumTMetro(String numTMetro) {
-		NumTMetro = numTMetro;
+		this.numTMetro = numTMetro;
 	}
 
 	public Date getDVencimiento() {

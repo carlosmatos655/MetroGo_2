@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -46,7 +47,7 @@ public class Promocion {
 	private Date DInicio;
 
 	@NotNull
-	@Past(message = "Ingresar una fecha de fin de la promoción")
+	@Future(message = "Ingresar una fecha de fin de la promoción")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DFin")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

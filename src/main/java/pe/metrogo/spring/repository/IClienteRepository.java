@@ -12,5 +12,5 @@ public interface IClienteRepository extends JpaRepository<Cliente, Integer> {
 
 	List<Cliente> findByNNombreyApellido(String NNombreyApellido);
 
-	//List<Cliente> findByNumDNI(String NumDNI);
+	List<Cliente> findByNumDNI(String numDNI);
 }

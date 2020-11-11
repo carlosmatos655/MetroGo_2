@@ -40,6 +40,7 @@
 							class="glyphicon glyphicon-plus" ></span> Tarjeta Metropolitano
 						</a>
 						
+						
 						<form th:action="@{/tmetro/find}" method="post"
 						th:object="${tmetro}">
 
@@ -50,7 +51,7 @@
 										<td><label for="numTMetro"
 											class="col-sm-2 col-form-label">Num TMetro:</label></td>
 										<td><input type="text" class="form-control"
-											th:field="*{NumTMetro}" id="numTMetro"
+											th:field="*{numTMetro}" id="numTMetro"
 											placeholder="Numero TMetro" required="required"></input></td>
 										<td><button type="submit" class="btn btn-danger">Buscar
 												<i class="iconf fa fa-search" style="color: white;"></i>
@@ -61,7 +62,7 @@
 							</table>
 						</div>
 					</form>
-						
+
 						<table class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>

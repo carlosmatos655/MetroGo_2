@@ -1,4 +1,4 @@
-package pe.metrogo.spring.controller;
+ package pe.metrogo.spring.controller;
 
 import java.text.ParseException;
 import java.util.List;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.metrogo.spring.entity.Cliente;
-import pe.metrogo.spring.entity.Nacionalidad;
 import pe.metrogo.spring.entity.TarjetaMetropolitano;
 import pe.metrogo.spring.entity.TipotarjetaMtro;
 import pe.metrogo.spring.service.IClienteService;

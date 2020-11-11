@@ -17,5 +17,5 @@ public interface ITarjetaMetropolitanoService {
 
 	List<TarjetaMetropolitano> listar();
 
-	List<TarjetaMetropolitano> findByNumTMetro(String NumTMetro);
+	List<TarjetaMetropolitano> findByNumTMetro(String numTMetro);
 }

@@ -37,7 +37,7 @@ public class Cliente implements Serializable {
 	@NotEmpty(message = "Debe ingresar su numero de dni completo")
 	@NotBlank(message = "No puede estar en blanco")
 	@Column(name = "NumDNI", nullable = false, length = 8)
-	private String NumDNI;
+	private String numDNI;
 	
 	@NotEmpty(message = "Debe ingresar su nombre completo")
 	@NotBlank(message = "No puede estar en blanco")
@@ -72,11 +72,11 @@ public class Cliente implements Serializable {
 	}
 
 	public String getNumDNI() {
-		return NumDNI;
+		return numDNI;
 	}
 
 	public void setNumDNI(String numDNI) {
-		NumDNI = numDNI;
+		this.numDNI = numDNI;
 	}
 
 	public String getNNombreyApellido() {

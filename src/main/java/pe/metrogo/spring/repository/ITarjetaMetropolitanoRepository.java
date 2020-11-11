@@ -10,5 +10,5 @@ import pe.metrogo.spring.entity.TarjetaMetropolitano;
 @Repository
 public interface ITarjetaMetropolitanoRepository extends JpaRepository<TarjetaMetropolitano, Integer> {
 
-	List<TarjetaMetropolitano> findByNumTMetro(String NumTMetro);
+	List<TarjetaMetropolitano> findByNumTMetro(String numTMetro);
 }

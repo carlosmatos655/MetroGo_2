@@ -10,5 +10,5 @@ import pe.metrogo.spring.entity.TarjetaCred;
 @Repository
 public interface ITarjetaCredRepository extends JpaRepository<TarjetaCred, Integer> {
 
-	List<TarjetaCred> findByNumTarjeta(String NumTarjeta);
+	List<TarjetaCred> findByNumTarjeta(String numTarjeta);
 }

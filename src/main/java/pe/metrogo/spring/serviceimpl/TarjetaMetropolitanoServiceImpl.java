@@ -64,8 +64,8 @@ public class TarjetaMetropolitanoServiceImpl implements ITarjetaMetropolitanoSer
 
 	@Override
 	@Transactional
-	public List<TarjetaMetropolitano> findByNumTMetro(String NumTMetro) {
+	public List<TarjetaMetropolitano> findByNumTMetro(String numTMetro) {
 		// TODO Auto-generated method stub
-		return dTMetro.findByNumTMetro(NumTMetro);
+		return dTMetro.findByNumTMetro(numTMetro);
 	}
 }

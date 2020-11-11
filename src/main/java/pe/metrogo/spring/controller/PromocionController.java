@@ -107,7 +107,7 @@ public class PromocionController {
 		return "listPromocion";
 	}
 	
-	@ModelAttribute("nacionalidad")
+	@ModelAttribute("promocion")
 	public Promocion createModel() {
 	    return new Promocion();
 	}

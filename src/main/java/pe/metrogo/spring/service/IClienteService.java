@@ -13,5 +13,5 @@ public interface IClienteService {
 	public Optional<Cliente> listarId(int CCliente);
 	List<Cliente> listar();
 	List<Cliente> findByNNombreyApellido(String NNombreyApellido);
-	//List<Cliente> findByNumDNI(String NumDNI);
+	List<Cliente> findByNumDNI(String numDNI);
 }

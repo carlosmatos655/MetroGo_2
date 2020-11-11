@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.metrogo.spring.entity.Cliente;
+import pe.metrogo.spring.entity.Nacionalidad;
 import pe.metrogo.spring.entity.TarjetaMetropolitano;
 import pe.metrogo.spring.entity.TipotarjetaMtro;
 import pe.metrogo.spring.service.IClienteService;
@@ -113,22 +114,21 @@ public class TarjetaMetropolitanoController {
 		return "listTMetro";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute TarjetaMetropolitano tmetro) throws ParseException {
-		List<TarjetaMetropolitano> listaTMetros;
+	@RequestMapping("/find")
+	public String findByNumTMetro(Map<String, Object> model, @ModelAttribute TarjetaMetropolitano tmetro) throws ParseException {
+		List<TarjetaMetropolitano> listaTMetro;
 		tmetro.setNumTMetro(tmetro.getNumTMetro());
-		listaTMetros = tService.buscarTarjetaMetropolitano(tmetro.getNumTMetro());
-		if (listaTMetros.isEmpty()) {
-			model.put("mensaje", "No se encontro");
+		listaTMetro = tService.findByNumTMetro(tmetro.getNumTMetro());
+
+		if (listaTMetro.isEmpty()) {
+			model.put("mensaje", "No se encontró");
 		}
-		model.put("ListaTMetros", listaTMetros);
-		return "buscar";
+		model.put("listaTMetros", listaTMetro );
+		return "listTMetro";
 	}
-
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("tmetro", new TarjetaMetropolitano());
-		return "tmetro";
+	
+	@ModelAttribute("tmetro")
+	public TarjetaMetropolitano createModel() {
+	    return new TarjetaMetropolitano();
 	}
-
 }

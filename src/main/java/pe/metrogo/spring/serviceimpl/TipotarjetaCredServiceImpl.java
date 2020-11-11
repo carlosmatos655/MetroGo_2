@@ -64,9 +64,9 @@ public class TipotarjetaCredServiceImpl implements ITipotarjetaCredService{
 
 	@Override
 	@Transactional
-	public List<TipotarjetaCred> buscarTipotarjetaCred(String NTTarjeta) {
+	public List<TipotarjetaCred> findByNTTarjeta(String NTTarjeta) {
 		// TODO Auto-generated method stub
-		return dTTarjeta.buscarTipotarjetaCred(NTTarjeta);
+		return dTTarjeta.findByNTTarjeta(NTTarjeta);
 	}
 	
 }

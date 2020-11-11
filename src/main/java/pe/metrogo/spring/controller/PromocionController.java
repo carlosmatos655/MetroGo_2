@@ -104,7 +104,7 @@ public class PromocionController {
 			model.put("mensaje", "No se encontró");
 		}
 		model.put("listaPromociones", listaPromocion );
-		return "listaPromociones";
+		return "listPromocion";
 	}
 	
 	@ModelAttribute("nacionalidad")

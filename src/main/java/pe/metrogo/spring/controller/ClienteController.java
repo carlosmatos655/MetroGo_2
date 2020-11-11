@@ -112,21 +112,34 @@ public class ClienteController {
 		return "listCliente";
 	}
 
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Cliente cliente) throws ParseException {
-		List<Cliente> listaClientes;
+	@RequestMapping("/find")
+	public String findByNNombreyApellido(Map<String, Object> model, @ModelAttribute Cliente cliente) throws ParseException {
+		List<Cliente> listaCliente;
 		cliente.setNNombreyApellido(cliente.getNNombreyApellido());
-		listaClientes = cService.buscarCliente(cliente.getNNombreyApellido());
-		if (listaClientes.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaClientes", listaClientes);
-		return "buscar";
-	}
+		listaCliente = cService.findByNNombreyApellido(cliente.getNNombreyApellido());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("cliente", new Cliente());
-		return "cliente";
+		if (listaCliente.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaClientes", listaCliente );
+		return "listCliente";
+	}
+	
+	@RequestMapping("/findDNI")
+	public String findByNumDNI(Map<String, Object> model, @ModelAttribute Cliente cliente) throws ParseException {
+		List<Cliente> listaCliente;
+		cliente.setNumDNI(cliente.getNumDNI());
+		listaCliente = cService.findByNumDNI(cliente.getNumDNI());
+
+		if (listaCliente.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaClientes", listaCliente );
+		return "listCliente";
+	}
+	
+	@ModelAttribute("cliente")
+	public Cliente createModel() {
+	    return new Cliente();
 	}
 }

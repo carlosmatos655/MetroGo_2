@@ -12,6 +12,6 @@ public interface IClienteService {
 	public void eliminar(int CCliente);
 	public Optional<Cliente> listarId(int CCliente);
 	List<Cliente> listar();
-	List<Cliente> buscarCliente(String NNombreyApellido);
-	List<Cliente> buscarNacionalidad(String NNacionalidad);
+	List<Cliente> findByNNombreyApellido(String NNombreyApellido);
+	List<Cliente> findByNumDNI(String NumDNI);
 }

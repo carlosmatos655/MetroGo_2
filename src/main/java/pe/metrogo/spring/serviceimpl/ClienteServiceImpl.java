@@ -60,13 +60,13 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Override
 	@Transactional
-	public List<Cliente> buscarCliente(String NNombreyApellido) {		
-		return dCli.buscarCliente(NNombreyApellido);
+	public List<Cliente> findByNNombreyApellido(String NNombreyApellido) {		
+		return dCli.findByNNombreyApellido(NNombreyApellido);
 	}
-
+	
 	@Override
 	@Transactional
-	public List<Cliente> buscarNacionalidad(String NNacionalidad) {
-		return dCli.buscarNacionalidad(NNacionalidad);
+	public List<Cliente> findByNumDNI(String NumDNI) {		
+		return dCli.findByNumDNI(NumDNI);
 	}
 }

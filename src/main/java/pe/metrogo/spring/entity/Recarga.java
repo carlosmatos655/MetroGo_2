@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
@@ -34,6 +36,8 @@ public class Recarga {
 	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private Date DFecha;
 	
+	@Max(value = 500, message = "No se permite ingresar valores superiores a S/ .500")
+	@Min(value = 1,  message = "No se permite ingresar valores inferiores a S/ .1")
 	private double MMonto;
 
 	@ManyToOne

@@ -99,21 +99,21 @@ public class NacionalidadController {
 		return "listNacionalidad";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute Nacionalidad nacionalidad) throws ParseException {
-		List<Nacionalidad> listaNacionalidades;
+	@RequestMapping("/find")
+	public String findByNNacionalidad(Map<String, Object> model, @ModelAttribute Nacionalidad nacionalidad) throws ParseException {
+		List<Nacionalidad> listaNacionalidad;
 		nacionalidad.setNNacionalidad(nacionalidad.getNNacionalidad());
-		listaNacionalidades = nService.buscarNacionalidad(nacionalidad.getNNacionalidad());
-		if (listaNacionalidades.isEmpty()) {
-			model.put("mensaje", "No se encontro");
+		listaNacionalidad = nService.findByNNacionalidad(nacionalidad.getNNacionalidad());
+
+		if (listaNacionalidad.isEmpty()) {
+			model.put("mensaje", "No se encontró");
 		}
-		model.put("ListaNacionalidades", listaNacionalidades);
+		model.put("listaNacionalidades", listaNacionalidad );
 		return "listNacionalidad";
 	}
-
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("nacionalidad", new Nacionalidad());
-		return "Bnacionalidad";
+	
+	@ModelAttribute("nacionalidad")
+	public Nacionalidad createModel() {
+	    return new Nacionalidad();
 	}
 }

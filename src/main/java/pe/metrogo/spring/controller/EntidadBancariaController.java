@@ -94,21 +94,21 @@ public class EntidadBancariaController {
 		return "listNacionalidad";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute EntidadBancaria entidad) throws ParseException {
-		List<EntidadBancaria> listaEntidades;
+	@RequestMapping("/find")
+	public String findByNEntidad(Map<String, Object> model, @ModelAttribute EntidadBancaria entidad) throws ParseException {
+		List<EntidadBancaria> listaEntidad;
 		entidad.setNEntidad(entidad.getNEntidad());
-		listaEntidades = eService.buscarEntidadBancaria(entidad.getNEntidad());
-		if (listaEntidades.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaEntidades", listaEntidades);
-		return "buscar";
-	}
+		listaEntidad = eService.findByNEntidad(entidad.getNEntidad());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("entidad", new EntidadBancaria());
-		return "entidad";
+		if (listaEntidad.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaEntidades", listaEntidad );
+		return "listEntidad";
+	}
+	
+	@ModelAttribute("entidad")
+	public EntidadBancaria createModel() {
+	    return new EntidadBancaria();
 	}
 }

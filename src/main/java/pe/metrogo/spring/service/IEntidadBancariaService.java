@@ -12,5 +12,5 @@ public interface IEntidadBancariaService {
 	public void eliminar(int CEntidad);
 	public Optional<EntidadBancaria> listarId(int CEntidad);
 	List<EntidadBancaria> listar();
-	List<EntidadBancaria> buscarEntidadBancaria(String NEntidad);
+	List<EntidadBancaria> findByNEntidad(String NEntidad);
 }

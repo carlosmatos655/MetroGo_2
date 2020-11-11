@@ -64,9 +64,9 @@ public class EntidadBancariaServiceImpl implements IEntidadBancariaService{
 
 	@Override
 	@Transactional
-	public List<EntidadBancaria> buscarEntidadBancaria(String NEntidad) {
+	public List<EntidadBancaria> findByNEntidad(String NEntidad) {
 		// TODO Auto-generated method stub
-		return dEntidad.buscarEntidadBancaria(NEntidad);
+		return dEntidad.findByNEntidad(NEntidad);
 	}
 	
 }

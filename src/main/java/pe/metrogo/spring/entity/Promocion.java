@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -32,6 +34,8 @@ public class Promocion {
 	@Column(name = "TDescripcion", nullable = false, length = 70)
 	private String TDescripcion;
 
+	@Max(value = 100, message = "No se permite ingresar valores superiores a S/ .100")
+	@Min(value = 1,  message = "No se permite ingresar valores inferiores a S/ .1")
 	private double MDescuento;
 
 	@NotNull

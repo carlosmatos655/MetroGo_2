@@ -12,7 +12,5 @@ public interface ITarjetaCredService {
 	public void eliminar(int CTarjeta);
 	public Optional<TarjetaCred> listarId(int CTarjeta);
 	List<TarjetaCred> listar();
-	List<TarjetaCred> buscarEntidadBancaria(String NEntidad);
-	List<TarjetaCred> buscarTipoTarjeta(String NTTarjeta);
-	List<TarjetaCred> buscarCliente(String NNombreyApellido);
+	List<TarjetaCred> findByNumTarjeta(String NumTarjeta);
 }

@@ -63,10 +63,10 @@ public class ClienteServiceImpl implements IClienteService{
 	public List<Cliente> findByNNombreyApellido(String NNombreyApellido) {		
 		return dCli.findByNNombreyApellido(NNombreyApellido);
 	}
-	
+	/*
 	@Override
 	@Transactional
 	public List<Cliente> findByNumDNI(String NumDNI) {		
 		return dCli.findByNumDNI(NumDNI);
-	}
+	}*/
 }

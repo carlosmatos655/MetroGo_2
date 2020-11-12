@@ -28,11 +28,26 @@
 	
 		<div th:replace="fragments/header :: header"></div>
 
-		<div class="container">
+		<div class="container" style="background-color: yellow">
 			<form id="myform">
-				<div class="row clearfix">
-					<div class="col-md-12 column" align="center">
-						<img th:src="@{/imagenes/img2.png}" width="800" height="600" alt="logo" align="middle"></img>
+				<div style="display: flex;" class="row">
+					<div class="col-6" style="flex-grow: 1">
+						<div style="margin-left: auto; height: 300px; width: 300px">
+							<img th:src="@{/imagenes/img2.png}" width="300" height="250" alt="logo" hspace="10" vspace="50" align="middle"></img>
+						</div>
+					</div>
+					<div class="col-6" style="flex-grow: 1">
+						<img th:src="@{/imagenes/img08.jpg}" width="300" height="200" style="margin-right: auto" alt="logo" hspace="30" vspace="40" align="middle"></img>
+					</div>
+				</div>
+				<div style="display: flex;" class="row">
+					<div class="col-6" style="flex-grow: 1">
+						<div style="margin-left: auto; height: 300px; width: 300px">
+							<img th:src="@{/imagenes/img07.jpg}" width="300" height="200" alt="logo" vspace="50" align="middle"></img>
+						</div>
+					</div>
+					<div class="col-6" style="flex-grow: 1">
+						<img th:src="@{/imagenes/img09.jpg}" width="300" height="200"  style="margin-right: auto" alt="logo" hspace="30" align="middle"></img>
 					</div>
 				</div>
 			</form>

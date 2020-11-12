@@ -64,6 +64,7 @@ public class ClienteController {
 			return "cliente";
 		} else {
 			String bCryptPassword = passwordEncoder.encode(objUsuario.getPassword());
+			objUsuario.setEnabled(true);
 			objUsuario.setPassword(bCryptPassword);
 			objUsuario.setId(objCliente.getCCliente());
 			objCliente.setUsuario(objUsuario);

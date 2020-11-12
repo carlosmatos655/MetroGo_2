@@ -5,7 +5,7 @@
 		
 		<meta charset="ISO-8859-1"></meta>
 		
-		<title>Nacionalidad</title>
+		<title>Recarga</title>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
@@ -26,27 +26,47 @@
 		<div th:replace="fragments/header :: header"></div>
 		
 		<div class="container">
-			<form th:action="@{/nacionalidad/registrar}" method="post" th:object="${nacionalidad}">
+			<form th:action="@{/recarga/registrar}" method="post" th:object="${recarga}">
 				<div class="form-group">
 					
-					<label for="CNacionalidad">CODIGO:</label> 
-					<input type="text" class="form-control" th:field="*{CNacionalidad}"></input>
+					<label for="CRecarga">CODIGO:</label> 
+					<input type="text" class="form-control" th:field="*{CRecarga}"></input>
 					
 					<div class="form-group">
 					
-						<label 	for="nombre">NOMBRE:</label> 
-						<input type="text" th:field="*{NNacionalidad}" class="form-control" id="nombre"></input>
-	
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('NNacionalidad')}" 
-							th:errors="*{NNacionalidad}">
-						</div>
+					<label for="DFecha">FECHA DE RECARGA:</label> <input
+						type="date" th:field="*{DFecha}" class="form-control"
+						id="DFecha"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('DFecha')}"
+						th:errors="*{DFecha}"></div>
 						
+						<label 	for="monto">MONTO:</label> 
+						<input type="text" th:field="*{MMonto}" class="form-control" id="monto"></input>
+	
 					</div>
+					
+					<label for="tmtro" class=" col-sm-2 col-form-label">TARJETA METROPOLITANO: </label>
+					<select
+						class="form-control" th:field="*{tmetro.CTarjetaMetro}">
+						<option th:each="t: ${listaTMetros}" th:value="${t.CTarjetaMetro}"
+							th:text="${t.NumTMetro}"
+							th:selected="(${t.CTarjetaMetro} == *{tmetro.CTarjetaMetro})"></option>
+					</select>
+										
+					<label for="promocion" class=" col-sm-2 col-form-label">PROMOCION: </label>
+					<select
+						class="form-control" th:field="*{promocion.CPromocion}">
+						<option th:each="p: ${listaPromociones}" th:value="${p.CPromocion}"
+							th:text="${p.NPromocion}"
+							th:selected="(${p.CPromocion} == *{promocion.CPromocion})"></option>
+					</select>
 					
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Aceptar</button>
-				<a href="/nacionalidad/listar" class="btn btn-danger">Cancelar</a>
+				<a href="/recarga/listar" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
 	

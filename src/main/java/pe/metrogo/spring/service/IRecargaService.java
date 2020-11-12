@@ -12,7 +12,4 @@ public interface IRecargaService {
 	public void eliminar(int CRecarga);
 	public Optional<Recarga> listarId(int CRecarga);
 	List<Recarga> listar();
-	List<Recarga> buscarUsuario(String NNombreyApellido);
-	List<Recarga> buscarTipotarjetaMtro(String NTTarjetaMetro);
-	List<Recarga> buscarTarjetaMetropolitano(String CTarjetaMetro);
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="UTF-8"></meta>
+		
+		<title>Clientes</title>
+		
+		<script type="text/javascript"
+			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>
+
+	</head>
+
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+
+		<div class="container">
+			<div id="myform">
+				<div class="row clearfix">
+					<div class="col-md-12 column" >
+						
+						<a  style="border-bottom-color: green" th:href="@{/cliente/irRegistrar}" id="add-row" 
+							type="button"
+							class="btn btn-primary btn-md left-block"> <span
+							class="glyphicon glyphicon-plus" ></span> Cliente
+						</a>
+						
+						<form th:action="@{/cliente/find}" method="post"
+						th:object="${cliente}">
+
+						<div class="form-group">
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="nombreCliente"
+											class="col-sm-2 col-form-label">Cliente: </label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{NNombreyApellido}" id="nombreCliente"
+											placeholder="Nombre Cliente" required="required"></input></td>
+										<td><button type="submit" class="btn btn-danger">Buscar
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/cliente/listar" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					
+					<form th:action="@{/cliente/findDNI}" method="post"
+						th:object="${cliente}">
+
+						<div class="form-group">
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="numDNI"
+											class="col-sm-2 col-form-label">DNI: </label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{numDNI}" id="numDNI"
+											placeholder="Numero DNI" required="required"></input></td>
+										<td><button type="submit" class="btn btn-danger">Buscar
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/cliente/listar" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+					
+						<table class="table table-bordered table-hover table-striped" id="tab_logic">
+							<thead>
+								<tr>
+									<th class="text-center">CODIGO</th>
+									<th class="text-center">DNI</th>
+									<th class="text-center">USUARIO</th>
+									<th class="text-center">CORREO</th>
+									<th class="text-center">FNACIMIENTO</th>
+									<th class="text-center">NACIONALIDAD</th>
+									<th class="text-center">OPERACIÓN</th>
+									<th class="text-center">OPERACIÓN</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cli: ${listaClientes}">
+									<td th:text="${cli.CCliente}"></td>
+									<td th:text="${cli.NumDNI}"></td>
+									<td th:text="${cli.NNombreyApellido}"></td>
+									<td th:text="${cli.TCorreo}"></td>
+									<td th:text="${#dates.format(cli.FNacimiento,'dd/MM/yyyy')}"></td>
+									<td th:text="${cli.nacionalidad.NNacionalidad}"></td>
+									<td><a th:href="@{/cliente/eliminar?id=}+${cli.CCliente}">Eliminar</a></td>
+									<td><a th:href="@{'/cliente/modificar/' + ${cli.CCliente}}">Modificar</a></td>
+								</tr>
+							</tbody>
+						</table>
+											
+					</div>
+				</div>
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
+		</div>
+	</div>
+	
+	<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+</html>

@@ -23,7 +23,7 @@ public class TarjetaCred {
 	@NotEmpty(message = "Debe ingresar su numero de tarjeta completo")
 	@NotBlank(message = "No puede estar en blanco")
 	@Column(name = "NumTarjeta", nullable = false, length = 16)
-	private String NumTarjeta;
+	private String numTarjeta;
 	
 	@ManyToOne
 	@JoinColumn(name = "CEntidad", nullable = false)
@@ -35,7 +35,7 @@ public class TarjetaCred {
 
 	@ManyToOne
 	@JoinColumn(name = "CDNI", nullable = false)
-	private Usuario usuario;
+	private Cliente cliente;
 	
 	public int getCTarjeta() {
 		return CTarjeta;
@@ -46,11 +46,11 @@ public class TarjetaCred {
 	}
 
 	public String getNumTarjeta() {
-		return NumTarjeta;
+		return numTarjeta;
 	}
 
 	public void setNumTarjeta(String numTarjeta) {
-		NumTarjeta = numTarjeta;
+		this.numTarjeta = numTarjeta;
 	}
 
 	public EntidadBancaria getEntidad() {
@@ -69,12 +69,11 @@ public class TarjetaCred {
 		this.ttarjeta = ttarjeta;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-
 }

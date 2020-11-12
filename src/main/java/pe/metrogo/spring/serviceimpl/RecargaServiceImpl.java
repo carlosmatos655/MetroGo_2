@@ -13,28 +13,29 @@ import pe.metrogo.spring.service.IRecargaService;
 
 @Service
 public class RecargaServiceImpl implements IRecargaService{
-
-	@Autowired
-	private IRecargaRepository dTrec; 
 	
+	@Autowired
+	private IRecargaRepository dRecarga;
+
 	@Override
 	@Transactional
-	public boolean insertar(Recarga tre) {
-		Recarga objTrec = dTrec.save(tre);
-		if(objTrec == null)
+	public boolean insertar(Recarga recarga) {
+		// TODO Auto-generated method stub
+		Recarga objRecarga = dRecarga.save(recarga);
+		if(objRecarga == null)
 			return false;
 		else
 			return true;
 	}
 
+	@Override
 	@Transactional
-	public boolean modificar(Recarga tre) {
-		boolean flag= false;
+	public boolean modificar(Recarga recarga) {
+		boolean flag = false;
 		try {
-			dTrec.save(tre);
+			dRecarga.save(recarga);
 			flag = true;
-			
-		} catch(Exception ex){
+		}catch(Exception ex){
 			System.out.println("Sucedio un error");
 		}
 		return flag;
@@ -43,41 +44,22 @@ public class RecargaServiceImpl implements IRecargaService{
 	@Override
 	@Transactional
 	public void eliminar(int CRecarga) {
-		dTrec.deleteById(CRecarga);		
+		// TODO Auto-generated method stub
+		dRecarga.deleteById(CRecarga);
 	}
 
 	@Override
 	@Transactional
 	public Optional<Recarga> listarId(int CRecarga) {
-		return dTrec.findById(CRecarga);
+		// TODO Auto-generated method stub
+		return dRecarga.findById(CRecarga);
 	}
 
 	@Override
 	@Transactional
 	public List<Recarga> listar() {
-		return dTrec.findAll();
-	}
-
-	@Transactional
-	public List<Recarga> buscarTarjetaMetropolitano(String CTarjetaMetro) {		
-		return dTrec.buscarTarjetaMetropolitano(CTarjetaMetro);
-	}
-
-	@Transactional
-	public List<Recarga> buscarPromocion(String NPromocion) {		
-		return dTrec.buscarPromocion(NPromocion);
-	}
-
-	@Override
-	public List<Recarga> buscarUsuario(String NNombreyApellido) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Recarga> buscarTipotarjetaMtro(String NTTarjetaMetro) {
-		// TODO Auto-generated method stub
-		return null;
+		return dRecarga.findAll();
 	}
 
 }

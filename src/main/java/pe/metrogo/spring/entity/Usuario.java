@@ -1,106 +1,92 @@
 package pe.metrogo.spring.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "usuario")
-
-public class Usuario implements Serializable {
+@Table(name = "users")
+public class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	private int CDNI;
-
-	@NotEmpty(message = "Debe ingresar su nombre completo")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "NNombreyApellido", nullable = false, length = 30)
-	private String NNombreyApellido;
-
-	@NotEmpty(message = "Debe ingresar su correo completo")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "TCorreo", nullable = false, length = 30)
-	private String TCorreo;
-
-	@NotEmpty(message = "Debe ingresar su contraseña completa")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "CContrasena", nullable = false, length = 10)
-	private String CContrasena;
-
-	@NotNull
-	@Past(message = "No puedes seleccionar un dia que no existe")
-	@Temporal(TemporalType.DATE)
-	@Column(name = "FNacimiento")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date FNacimiento;
-
-	@ManyToOne
-	@JoinColumn(name = "CNacionalidad", nullable = false)
-	private Nacionalidad nacionalidad;
 	
-	public int getCDNI() {
-		return CDNI;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id; 
+	
+	@Column(length = 30, unique = true)
+	private String username;
+	
+	@Column(length = 90)
+	private String password;
+	
+	private boolean enabled;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private List<Role> roles;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", nullable = false, updatable = false)
+	private Cliente cliente;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setCDNI(int cDNI) {
-		CDNI = cDNI;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNNombreyApellido() {
-		return NNombreyApellido;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNNombreyApellido(String nNombreyApellido) {
-		NNombreyApellido = nNombreyApellido;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getTCorreo() {
-		return TCorreo;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setTCorreo(String tCorreo) {
-		TCorreo = tCorreo;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getCContrasena() {
-		return CContrasena;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setCContrasena(String cContrasena) {
-		CContrasena = cContrasena;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public Date getFNacimiento() {
-		return FNacimiento;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-	public void setFNacimiento(Date fNacimiento) {
-		FNacimiento = fNacimiento;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
-	public Nacionalidad getNacionalidad() {
-		return nacionalidad;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setNacionalidad(Nacionalidad nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-
 }

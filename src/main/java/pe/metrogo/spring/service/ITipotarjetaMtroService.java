@@ -12,5 +12,5 @@ public interface ITipotarjetaMtroService {
 	public void eliminar(int CTTarjetaMetro);
 	public Optional<TipotarjetaMtro> listarId(int CTTarjetaMetro);
 	List<TipotarjetaMtro> listar();
-	List<TipotarjetaMtro> buscarTipotarjetaMtro(String NTTarjetaMetro);
+	List<TipotarjetaMtro> findByNTTarjetaMetro(String NTTarjetaMetro);
 }

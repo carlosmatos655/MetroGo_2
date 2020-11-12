@@ -64,9 +64,9 @@ public class NacionalidadServiceImpl implements INacionalidadService{
 
 	@Override
 	@Transactional
-	public List<Nacionalidad> buscarNacionalidad(String NNacionalidad) {
+	public List<Nacionalidad> findByNNacionalidad(String NNacionalidad) {
 		// TODO Auto-generated method stub
-		return dNacionalidad.buscarNacionalidad(NNacionalidad);
+		return dNacionalidad.findByNNacionalidad(NNacionalidad);
 	}
 	
 }

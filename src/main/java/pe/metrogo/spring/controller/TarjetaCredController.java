@@ -1,6 +1,7 @@
 package pe.metrogo.spring.controller;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.metrogo.spring.entity.Cliente;
 import pe.metrogo.spring.entity.EntidadBancaria;
 import pe.metrogo.spring.entity.TarjetaCred;
 import pe.metrogo.spring.entity.TipotarjetaCred;
-import pe.metrogo.spring.entity.Usuario;
+import pe.metrogo.spring.service.IClienteService;
 import pe.metrogo.spring.service.IEntidadBancariaService;
 import pe.metrogo.spring.service.ITarjetaCredService;
 import pe.metrogo.spring.service.ITipotarjetaCredService;
-import pe.metrogo.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/tarjeta")
@@ -33,7 +34,7 @@ public class TarjetaCredController {
 	private ITarjetaCredService tService;
 
 	@Autowired
-	private IUsuarioService uService;
+	private IClienteService cService;
 
 	@Autowired
 	private ITipotarjetaCredService iService;
@@ -49,11 +50,11 @@ public class TarjetaCredController {
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
-		model.addAttribute("listaUsuarios", uService.listar());
+		model.addAttribute("listaClientes", cService.listar());
 		model.addAttribute("listaEntidades", eService.listar());
 		model.addAttribute("listaTTarjetas", iService.listar());
 		model.addAttribute("tarjeta", new TarjetaCred());
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("cliente", new Cliente());
 		model.addAttribute("entidad", new EntidadBancaria());
 		model.addAttribute("ttarjeta", new TipotarjetaCred());
 		return "tarjeta";
@@ -63,7 +64,7 @@ public class TarjetaCredController {
 	public String registrar(@ModelAttribute @Valid TarjetaCred objTarjeta, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaEntidades", eService.listar());
 			model.addAttribute("listaTTarjetas", iService.listar());
 			return "tarjeta";
@@ -85,7 +86,7 @@ public class TarjetaCredController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/tarjeta/listar";
 		} else {
-			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaEntidades", eService.listar());
 			model.addAttribute("listaTTarjetas", iService.listar());
 			if (objTarjeta.isPresent())
@@ -121,23 +122,21 @@ public class TarjetaCredController {
 		return "listTarjeta";
 	}
 
-	/*
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute TarjetaCred tarjeta) throws ParseException {
-		List<TarjetaCred> listaTarjetas;
-		tarjeta.setUsuario(tarjeta.getUsuario());
-		listaTarjetas = tService.buscarUsuario(tarjeta.getUsuario());
-		if (listaTarjetas.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaTarjetas", listaTarjetas);
-		return "buscar";
-	}
+	@RequestMapping("/find")
+	public String findByNumTarjeta(Map<String, Object> model, @ModelAttribute TarjetaCred tarjeta) throws ParseException {
+		List<TarjetaCred> listaTarjeta;
+		tarjeta.setNumTarjeta(tarjeta.getNumTarjeta());
+		listaTarjeta = tService.findByNumTarjeta(tarjeta.getNumTarjeta());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("tarjeta", new TarjetaCred());
-		return "tarjeta";
+		if (listaTarjeta.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaTarjetas", listaTarjeta );
+		return "listTarjeta";
 	}
-	*/
+	
+	@ModelAttribute("tarjeta")
+	public TarjetaCred createModel() {
+	    return new TarjetaCred();
+	}
 }

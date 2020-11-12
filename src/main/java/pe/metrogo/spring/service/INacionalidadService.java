@@ -12,5 +12,5 @@ public interface INacionalidadService {
 	public void eliminar(int CNacionalidad);
 	public Optional<Nacionalidad> listarId(int CNacionalidad);
 	List<Nacionalidad> listar();
-	List<Nacionalidad> buscarNacionalidad(String NNacionalidad);
+	List<Nacionalidad> findByNNacionalidad(String NNacionalidad);
 }

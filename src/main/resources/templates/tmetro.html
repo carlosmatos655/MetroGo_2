@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="ISO-8859-1"></meta>
+		
+		<title>Tarjeta Metropolitano</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/tmetro/registrar}" method="post" th:object="${tmetro}">
+				<div class="form-group">
+					
+					<label for="CTarjetaMetro">CODIGO:</label> 
+					<input type="text" class="form-control" th:field="*{CTarjetaMetro}"></input>
+					
+					<div class="form-group">
+					
+						<label 	for="NumTMetro">NUMERO TARJETA:</label> 
+						<input type="text" th:field="*{NumTMetro}" class="form-control" id="NumTMetro"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NumTMetro')}" 
+							th:errors="*{NumTMetro}">
+						</div>
+						
+					</div>
+					
+					<label for="DVencimiento">FECHA DE VENCIMIENTO:</label> <input
+						type="date" th:field="*{DVencimiento}" class="form-control"
+						id="DVencimiento"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('DVencimiento')}"
+						th:errors="*{DVencimiento}"></div>
+						
+					<label for="ttarjetametro" class=" col-sm-2 col-form-label">TTARJETA METRO: </label>
+					<select
+						class="form-control" th:field="*{ttarjetametro.CTTarjetaMetro}">
+						<option th:each="t: ${listaTTarjetasMetro}" th:value="${t.CTTarjetaMetro}"
+							th:text="${t.NTTarjetaMetro}"
+							th:selected="(${t.CTTarjetaMetro} == *{ttarjetametro.CTTarjetaMetro})"></option>
+					</select>
+					
+					<label for="cliente" class=" col-sm-2 col-form-label">CLIENTE: </label>
+					<select
+						class="form-control" th:field="*{cliente.CCliente}">
+						<option th:each="c: ${listaClientes}" th:value="${c.CCliente}"
+							th:text="${c.NNombreyApellido}"
+							th:selected="(${c.CCliente} == *{cliente.CCliente})"></option>
+					</select>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/tmetro/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>

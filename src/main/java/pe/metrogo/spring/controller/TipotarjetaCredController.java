@@ -94,21 +94,21 @@ public class TipotarjetaCredController {
 		return "listTTarjeta";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute TipotarjetaCred ttarjeta) throws ParseException {
-		List<TipotarjetaCred> listaTTarjetas;
+	@RequestMapping("/find")
+	public String findByNTTarjeta(Map<String, Object> model, @ModelAttribute TipotarjetaCred ttarjeta) throws ParseException {
+		List<TipotarjetaCred> listaTTarjeta;
 		ttarjeta.setNTTarjeta(ttarjeta.getNTTarjeta());
-		listaTTarjetas = tService.buscarTipotarjetaCred(ttarjeta.getNTTarjeta());
-		if (listaTTarjetas.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaTTarjetas", listaTTarjetas);
-		return "buscar";
-	}
+		listaTTarjeta = tService.findByNTTarjeta(ttarjeta.getNTTarjeta());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("ttarjeta", new TipotarjetaCred());
-		return "ttarjeta";
+		if (listaTTarjeta.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaTTarjetas", listaTTarjeta );
+		return "listTTarjeta";
+	}
+	
+	@ModelAttribute("ttarjeta")
+	public TipotarjetaCred createModel() {
+	    return new TipotarjetaCred();
 	}
 }

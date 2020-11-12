@@ -12,5 +12,5 @@ public interface IPromocionService {
 	public void eliminar(int CPromocion);
 	public Optional<Promocion> listarId(int CPromocion);
 	List<Promocion> listar();
-	List<Promocion> buscarPromocion(String NPromocion);
+	List<Promocion> findByNPromocion(String NPromocion);
 }

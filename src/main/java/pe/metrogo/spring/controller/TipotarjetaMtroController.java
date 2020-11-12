@@ -94,21 +94,21 @@ public class TipotarjetaMtroController {
 		return "listTTarjetaMetro";
 	}
 	
-	@RequestMapping("/buscar")
-	public String buscar(Map<String, Object> model, @ModelAttribute TipotarjetaMtro ttarjetametro) throws ParseException {
-		List<TipotarjetaMtro> listaTTarjetasMetro;
+	@RequestMapping("/find")
+	public String findByNTTarjetaMetro(Map<String, Object> model, @ModelAttribute TipotarjetaMtro ttarjetametro) throws ParseException {
+		List<TipotarjetaMtro> listaTTarjetaMetro;
 		ttarjetametro.setNTTarjetaMetro(ttarjetametro.getNTTarjetaMetro());
-		listaTTarjetasMetro = tService.buscarTipotarjetaMtro(ttarjetametro.getNTTarjetaMetro());
-		if (listaTTarjetasMetro.isEmpty()) {
-			model.put("mensaje", "No se encontro");
-		}
-		model.put("ListaTTarjetasMetro", listaTTarjetasMetro);
-		return "buscar";
-	}
+		listaTTarjetaMetro = tService.findByNTTarjetaMetro(ttarjetametro.getNTTarjetaMetro());
 
-	@RequestMapping("/irBuscar")
-	public String irBuscar(Model model) {
-		model.addAttribute("ttarjetametro", new TipotarjetaMtro());
-		return "ttarjetametro";
+		if (listaTTarjetaMetro.isEmpty()) {
+			model.put("mensaje", "No se encontró");
+		}
+		model.put("listaTTarjetasMetro", listaTTarjetaMetro );
+		return "listTTarjetaMetro";
+	}
+	
+	@ModelAttribute("ttarjetametro")
+	public TipotarjetaMtro createModel() {
+	    return new TipotarjetaMtro();
 	}
 }

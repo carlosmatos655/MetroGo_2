@@ -34,38 +34,36 @@
 				<div class="row clearfix">
 					<div class="col-md-12 column" >
 						
-						<a  style="border-bottom-color: green" th:href="@{/tarjeta/irRegistrar}" id="add-row" 
+						<a  style="border-bottom-color: green" th:href="@{/recarga/irRegistrar}" id="add-row" 
 							type="button"
 							class="btn btn-primary btn-md left-block"> <span
 							class="glyphicon glyphicon-plus" ></span> Recarga
 						</a>
 						
-						<a  style="border-bottom-color: green" th:href="@{/tarjeta/irBuscar}" id="add-row" 
-							type="button"
-							class="btn btn-primary btn-md left-block"> <span
-							class="glyphicon glyphicon-search" ></span> 
-						</a>
 						
 						<table class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>
-									<th class="text-center">CODIGORECARGA</th>
-									<th class="text-center">MONTO</th>
-									<th class="text-center">FECHARECARGA</th>
-									<th class="text-center">TARJETAMETROPOLITANO</th>
+									<th class="text-center">CODIGO</th>
+									<th class="text-center">FECHA DE RECARGA</th>
+									<th class="text-center">TARJETA METROPOLITANO</th>
+									<th class="text-center">MONTO</th>									
 									<th class="text-center">PROMOCION</th>
-									<th class="text-center">TARJETAPAGO</th>
+									<th class="text-center">TOTAL</th>
+									<th class="text-center">OPERACIÓN</th>
+									<th class="text-center">OPERACIÓN</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="tre: ${listaRecarga}">
-									<td th:text="${tre.CRecarga}"></td>
-									<td th:text="${tre.MMonto}"></td>
-									<td th:text="${tre.DFecha}"></td>
-									<td th:text="${tre.tarjetametropolitano.CTarjetaMetro}"></td>
-									<td th:text="${tre.promocion.CPromocion}"></td>
-									<td><a th:href="@{/tarjeta/eliminar?id=}+${tar.CRecarga}">Eliminar</a></td>
-									<td><a th:href="@{'/tarjeta/modificar/' + ${tar.CRecarga}}">Modificar</a></td>
+								<tr th:each="r: ${listaRecargas}">
+									<td th:text="${r.CRecarga}"></td>
+									<td th:text="${#dates.format(r.DFecha,'dd/MM/yyyy')}"></td>
+									<td th:text="${r.tmetro.NumTMetro}"></td>
+									<td th:text="${r.MMonto}"></td>
+									<td th:text="${r.promocion.NPromocion}"></td>
+									<td th:text="${r.MMonto - r.promocion.MDescuento}"></td>					
+									<td><a th:href="@{/recarga/eliminar?id=}+${r.CRecarga}">Eliminar</a></td>
+									<td><a th:href="@{'/recarga/modificar/' + ${r.CRecarga}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

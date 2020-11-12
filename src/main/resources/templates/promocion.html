@@ -38,8 +38,11 @@
 						<input type="text" th:field="*{NPromocion}" class="form-control" id="nombre"></input>
 	
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('NPromocion')}" 
-							th:errors="*{NPromocion}">
+							th:errors="*{Npromocion}">
 						</div>
+						
+						<label 	for="MDescuento">DESCUENTO: </label> 
+						<input type="text" th:field="*{MDescuento}" class="form-control" id="MDescuento"></input>
 						
 						<label for="DInicio">FECHA DE INICIO:</label> <input
 						type="date" th:field="*{DInicio}" class="form-control"

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="UTF-8"></meta>
+		
+		<title>Tarjetas Metropolitano</title>
+		
+		<script type="text/javascript"
+			src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>
+
+	</head>
+
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+
+		<div class="container">
+			<div id="myform">
+				<div class="row clearfix">
+					<div class="col-md-12 column" >
+						
+						<a  style="border-bottom-color: green" th:href="@{/tmetro/irRegistrar}" id="add-row" 
+							type="button"
+							class="btn btn-primary btn-md left-block"> <span
+							class="glyphicon glyphicon-plus" ></span> Tarjeta Metropolitano
+						</a>
+						
+						
+						<form th:action="@{/tmetro/find}" method="post"
+						th:object="${tmetro}">
+
+						<div class="form-group">
+							<table>
+								<tbody>
+									<tr>
+										<td><label for="numTMetro"
+											class="col-sm-2 col-form-label">Num TMetro:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{numTMetro}" id="numTMetro"
+											placeholder="Numero TMetro" required="required"></input></td>
+										<td><button type="submit" class="btn btn-danger">Buscar
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/tmetro/listar" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+
+						<table class="table table-bordered table-hover table-striped" id="tab_logic">
+							<thead>
+								<tr>
+									<th class="text-center">CODIGO</th>
+									<th class="text-center">NUMTARJETA</th>
+									<th class="text-center">DVENCIMIENTO</th>
+									<th class="text-center">TTARJETAMETRO</th>
+									<th class="text-center">CLIENTE</th>
+									<th class="text-center">OPERACIÓN</th>
+									<th class="text-center">OPERACIÓN</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="tar: ${listaTMetros}">
+									<td th:text="${tar.CTarjetaMetro}"></td>
+									<td th:text="${tar.NumTMetro}"></td>
+									<td th:text="${#dates.format(tar.DVencimiento,'dd/MM/yyyy')}"></td>
+									<td th:text="${tar.ttarjetametro.NTTarjetaMetro}"></td>
+									<td th:text="${tar.cliente.NNombreyApellido}"></td>
+									<td><a th:href="@{/tmetro/eliminar?id=}+${tar.CTarjetaMetro}">Eliminar</a></td>
+									<td><a th:href="@{'/tmetro/modificar/' + ${tar.CTarjetaMetro}}">Modificar</a></td>
+								</tr>
+							</tbody>
+						</table>
+											
+					</div>
+				</div>
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
+		</div>
+	</div>
+	
+	<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+</html>

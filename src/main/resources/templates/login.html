@@ -1,25 +1,59 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>MetroGO</title>
-
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-
-</head>
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+	
+		<meta charset="UTF-8"></meta>
+		<title>METRO GO</title>
+		
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>
+		
+	</head>
+	
 <body>
-    <div class="modal-dialog text-center">
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:#0000FF;">
+		<div class="container">
+			<div class="navbar-header">
+				<buttom type="buttom"></buttom>
+				<a href="#" class="navbar-brand" style="color:#FFFF00";><strong>MetroGO</strong></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" style="color:#FFFF00">Nosotros</a></li>
+					<li><a href="#" style="color:#FFFF00">Tarifas</a></li>
+					<li><a href="#" style="color:#FFFF00">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<header>
+	<div class="container" style="background-image: url('imagenes/img10.jpg')">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-sm-offset-1">
+				<h1>Seguridad y Confianza nuestros mejores aliados</h1>
+			</div>
+			<div class="col-sm-4 col-sm-offset-2">
+				<img class="img-responsive center-block" th:src="@{/imagenes/metropolitano.jpg}" width="300" height="150" alt="metropolitano"/>
+			</div>
+			<div class="modal-dialog text-center">
         <div class="col-sm-8 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
@@ -30,7 +64,7 @@
                         <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" id="username" autofocus="true" required="true"/>
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password" required="true" id="password"/>
+                        <input type="password" class="form-control" placeholder="ContraseÃ±a" name="password" required="true" id="password"/>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
                 </form>
@@ -45,10 +79,21 @@
 		            Usuario y contrasena? invalidos
 		        </div>
 		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            Acaba de cerrar sesión
+		            Acaba de cerrar sesiÃ³n
 		        </div>
             </div>
         </div>
     </div>
+		</div>
+	</div>
+</header>
+
+
+
+
+
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

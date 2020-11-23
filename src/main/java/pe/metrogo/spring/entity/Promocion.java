@@ -41,14 +41,14 @@ public class Promocion {
 	private double MDescuento;
 
 	@NotNull
-	@Past(message = "Ingresar una fecha de inicio de la promoción")
+	@Past(message = "Ingresar una fecha correcta de inicio de la promoción")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DInicio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DInicio;
 
 	@NotNull
-	@Future(message = "Ingresar una fecha de fin de la promoción")
+	@Future(message = "Ingresar una fecha correcta de fin de la promoción")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DFin")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

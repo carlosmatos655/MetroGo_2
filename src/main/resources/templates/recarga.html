@@ -59,11 +59,11 @@
 					</select>
 										
 					<label for="promocion" class=" col-sm-2 col-form-label">PROMOCION: </label>
-					<select
+					<select 
 						class="form-control" th:field="*{promocion.CPromocion}">
 						<option th:each="p: ${listaPromociones}" th:value="${p.CPromocion}"
 							th:text="${p.NPromocion}"
-							th:selected="(${p.CPromocion} == *{promocion.CPromocion})"></option>
+							th:selected="(${p.CPromocion} == *{promocion.CPromocion})"> </option>
 					</select>
 					
 				</div>

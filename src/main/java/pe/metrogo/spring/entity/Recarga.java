@@ -41,7 +41,7 @@ public class Recarga {
 	private double MMonto;
 
 	@ManyToOne
-	@JoinColumn(name = "CPromocion", nullable = false)
+	@JoinColumn(name = "CPromocion")
 	private Promocion promocion;
 
 	@ManyToOne

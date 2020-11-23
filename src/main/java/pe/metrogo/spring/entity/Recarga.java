@@ -16,7 +16,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,10 +29,8 @@ public class Recarga {
 	private int CRecarga;
 	
 	@NotNull
-	@Past(message="No puedes seleccionar un dia que no existe")
 	@Temporal(TemporalType.DATE)
 	@Column(name="DFecha")
-	@DateTimeFormat(pattern= "yyyy-MM-dd")
 	private Date DFecha;
 	
 	@Max(value = 500, message = "No se permite ingresar valores superiores a S/ .500")

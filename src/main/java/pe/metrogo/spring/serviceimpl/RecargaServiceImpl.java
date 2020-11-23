@@ -1,5 +1,6 @@
 package pe.metrogo.spring.serviceimpl;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,11 +17,15 @@ public class RecargaServiceImpl implements IRecargaService{
 	
 	@Autowired
 	private IRecargaRepository dRecarga;
-
+	
+	Calendar car = Calendar.getInstance();
+	
 	@Override
 	@Transactional
 	public boolean insertar(Recarga recarga) {
 		// TODO Auto-generated method stub
+		System.out.println(recarga.getDFecha());
+		recarga.setDFecha(car.getTime());
 		Recarga objRecarga = dRecarga.save(recarga);
 		if(objRecarga == null)
 			return false;

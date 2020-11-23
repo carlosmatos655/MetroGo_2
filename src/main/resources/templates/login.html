@@ -1,30 +1,14 @@
 !DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	
-	<head>
-	
-		<meta charset="UTF-8"></meta>
-		<title>METRO GO</title>
-		
-		<script type="text/javascript"
-				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
-		</script>
-		
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
-		</link>
-		
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-		</script>
-		
-		<script src="//code.jquery.com/jquery-1.11.1.min.js">
-		</script>
-		
-	</head>
+<html xmlns:th="http://www.thymeleaf.org">	
+<head>
+    <meta charset="utf-8">
+    <title>MetroGO</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+    <link rel="stylesheet" type="text/css" href="css/boootstrap.css">	
+    <link rel="stylesheet" type="text/css" href="css/index.css">	
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">	
+</head>
 	
 <body>
 
@@ -45,38 +29,39 @@
 	</nav>
 
 <header>
-	<div class="container" style="background-image: url('imagenes/img10.jpg')">
+	<div class="container bg-image-10">
 		<div class="row">
-			<div class="col-xs-12 col-sm-7 col-sm-offset-1">
-				<h1>Seguridad y Confianza nuestros mejores aliados</h1>
+			<div class="col-xs-5 col-sm-7 col-sm-offset-1" style="background-color:#FFFF00">
+				<h1 style="color:#0000FF";>"Seguridad y Confianza</br>
+				    nuestros mejores aliados..."
+				</h1> 
 			</div>
 			<div class="col-sm-4 col-sm-offset-2">
-				<img class="img-responsive center-block" th:src="@{/imagenes/metropolitano.jpg}" width="300" height="150" alt="metropolitano"/>
+				<img  style="margin-left: auto;" class="img-responsive" th:src="@{/imagenes/metropolitano.jpg}" width="400" height="200" alt="metropolitano"/>
 			</div>
 			<div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
-            <div class="modal-content">
-                <div class="col-12 user-img">
-                    <img src="static/img/usuario.jpg" th:src="@{/img/usuario.jpg}"/>
-                </div>
-                <form class="col-12" th:action="@{/login}" method="post">
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" id="username" autofocus="true" required="true"/>
-                    </div>
-                    <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password" required="true" id="password"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
-                </form>
+      	  		<div class="col-sm-8 main-section">
+            		<div class="modal-content">
+                		<div class="user-img">
+                    		<img src="static/img/usuario.jpg" th:src="@{/img/usuario.jpg}" width=100px; height=100px;>
+                		</div>
+               			    <form class="col-10" th:action="@{/login}" method="post">
+                   				 <div class="form-group" id="user-group">
+                        			<input type="text" class="form-control" placeholder="Nombre de usuario" name="username" id="username" autofocus="true" required="true"/>
+                  				 </div>
+                    			 <div class="form-group" id="contrasena-group">
+                        			<input type="password" class="form-control" placeholder="Contraseña" name="password" required="true" id="password"/>
+                    			 </div>
+                    			    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                			</form>
                 
                 <input type="hidden" th:name="${_csrf.parameterName}"
 								th:value="${_csrf.token}" />
-								
-                <div class="col-12 forgot">
-                    <a href="#">Recordar contrasena?</a>
+                <div class="forgot">
+                    <a href="#">Recordar contrasena</a>
                 </div>
                 <div th:if="${param.error}" class="alert alert-danger" role="alert">
-		            Usuario y contrasena? invalidos
+		            Usuario y contrasena invalidos
 		        </div>
 		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
 		            Acaba de cerrar sesión
@@ -88,9 +73,137 @@
 	</div>
 </header>
 
+<div class="container">
 
+	<div class="row centrado">
+		<div class="col-lg-6 col-lg-offset-3">
+			<h1>Una oportunidad para mejorar al país</h1>
+			<h3>Somos la empresa más grande de transportes a nivel Perú, 
+			nuestro propósito es brindar a los pasajeros la calidad y seguridad del servicio
+			que ellos necesitan. </h3>
+		</div>
+	</div>
 
+	<div class="row centrado">
+		<div class="col-md-6 col-sm-6">
+		<img class="ninos" src="static/imagenes/ninos.jpg" th:src="@{/imagenes/ninos.jpg}" width="200px">
+			<h4>1. Tarjeta Kids</h4>
+			<p>Exclusiva para niños entre 5 y 16 años. Precio del pasaje 0.50 soles y compra
+			de la tarjeta a solo 5 soles. Para otorgarte esta tarjeta debes acudir a cualquiera
+			de nuestras estaciones con tu DNI y uno de tus apoderados</p>
+		</div>
+		
+		<div class="col-md-6 col-sm-6">
+		<img class="adolescentes" src="static/imagenes/Adolescentes.jpg" th:src="@{/imagenes/Adolescentes.jpg}" width="200px">
+			<h4>2. Tarjeta Universitaria</h4>
+			<p>Exclusiva para usuarios universitarios. Precio del pasaje 0.80 soles y compra
+			de la tarjeta a solo 5 soles. Para otorgarte esta tarjeta debes acudir a cualquiera
+			de nuestras estaciones con tu DNI y tu carnet universitario vigente</p>
+		</div>
+	</div>
+	<div class="row centrado">
+		<div class="col-md-6 col-sm-6">
+		<img class="adultos" src="static/imagenes/adultos.jpg" th:src="@{/imagenes/adultos.jpg}" width="200px">
+			<h4>3. Tarjeta Adulto</h4>
+			<p>Exclusiva para todos los usuarios. Precio del pasaje 1.50 soles y compra
+			de la tarjeta a solo 5 soles. Para otorgarte esta tarjeta debes acudir a cualquiera
+			de nuestras estaciones solamente con tu DNI</p>
+		</div>
+		
+		<div class="col-md-6 col-sm-6">
+		<img class="discapacitados" src="static/imagenes/discapacitados.jpg" th:src="@{/imagenes/discapacitados.jpg}" width="200px">
+			<h4>4. Tarjeta Exlusiva</h4>
+			<p>Exclusiva para los usuarios que  disminución física , sensorial o psíquica que la incapacita total
+			o parcialmente para el trabajo o para otras tareas ordinarias de la vid. Precio del pasaje GRATIS 
+			y compra de la tarjeta a solo 2 soles. Para otorgarte esta tarjeta debes acudir a cualquiera
+			de nuestras estaciones con tu DNI y el "Carnet del CONADIS"</p>
+		</div>
+	</div>	
+	
+	<hr class="container">
+	
+	<div class="container">
+		<div class="row centrado">
+			<div>
+				<h1>Calidad en el mejor servicio experto</h1>
+				<h3>Los mejores están con nosotros. ¿Te animas?</h3>
+			</div>
+		</div>
+	
+	<div class="row centrado">
+		<div>
+				<div id="carousel-example-generic" class="carousel slide"
+					data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0"
+							class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
 
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="static/imagenes/m1.jpg" th:src="@{/imagenes/m1.jpg}" alt="...">
+						</div>
+						<div class="item">
+							<img src="static/imagenes/m2.jpg" th:src="@{/imagenes/m2.jpg}" alt="...">
+						</div>
+						<div class="item">
+							<img src="static/imagenes/m3.jpg" th:src="@{/imagenes/m3.jpg}" alt="...">
+						</div>
+					</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel"
+							data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left"></span> <span
+							class="sr-only">Previous</span>
+						</a> <a class="right carousel-control" href="#myCarousel"
+							data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right"></span> <span
+							class="sr-only">Next</span>
+						</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr class="container">
+
+<div class="container">
+	<div class="row centrado">
+		<div class="col-lg-6 col-lg-offset-3">
+			<h1>Nuestro Equipo de Contacto</h1>
+			<h3>Somos un equipo especializado en buscar soluciones a tus problemas</h3>
+		</div>
+	</div>
+
+	<div class="row centrado">
+		<div class="col-md-6 col-sm-6">
+			<img class="img-circle" src="static/imagenes/Foto.png" th:src="@{/imagenes/Foto.png}" width="140px">
+			<h4>Jorge Solorzano Davila</h4>
+			<p>Carrera de Ingeniería de Sistemas de la Información (6to ciclo)</p>
+			<p><i class="glyphicon glyphicon-briefcase"></i><i class="glyphicon glyphicon-envelope"></i>
+			<i class="glyphicon glyphicon-phone"></i></p>
+		</div>
+		<div class="col-md-6 col-sm-6">
+			<img class="img-circle" src="static/imagenes/carlos2.png" th:src="@{/imagenes/carlos2.png}" width="140px">
+			<h4>Carlos Matos Gavino</h4>
+			<p>Carrera de Ingeniería de Sistemas de la Información (6to ciclo)</p>
+			<p><i class="glyphicon glyphicon-briefcase"></i><i class="glyphicon glyphicon-envelope"></i>
+			<i class="glyphicon glyphicon-phone"></i></p>
+		</div>
+	</div>
+
+</div>
+
+<div class="container">
+	<hr>
+	<p class="centrado"><a href="#">Programación Web</a> - 2020-02</p>
+</div>
 
 
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

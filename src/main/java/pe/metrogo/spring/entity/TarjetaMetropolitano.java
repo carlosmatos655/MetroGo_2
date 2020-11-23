@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,6 +33,7 @@ public class TarjetaMetropolitano {
 	private String numTMetro;
 
 	@NotNull
+	@Future(message = "Tarjeta Caducada")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DVencimiento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

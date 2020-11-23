@@ -32,6 +32,7 @@ public class Promocion {
 	@Column(name = "NPromocion", nullable = false, length = 30)
 	private String NPromocion;
 
+	@NotEmpty(message = "Debe ingresar la descripcion de la promoción")
 	@Column(name = "TDescripcion", nullable = false, length = 70)
 	private String TDescripcion;
 

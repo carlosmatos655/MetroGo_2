@@ -44,6 +44,9 @@
 						
 						<label 	for="monto">MONTO:</label> 
 						<input type="text" th:field="*{MMonto}" class="form-control" id="monto"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('MMonto')}" 
+							th:errors="*{MMonto}">
+						</div>
 	
 					</div>
 					

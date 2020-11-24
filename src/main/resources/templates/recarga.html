@@ -33,6 +33,14 @@
 					<input type="text" class="form-control" th:field="*{CRecarga}"></input>
 					
 					<div class="form-group">
+					
+					<label style="display:none;" for="DFecha">FECHA DE RECARGA:</label> <input
+						style="display:none;" type="date" th:field="*{DFecha}" class="form-control"
+						id="DFecha"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('DFecha')}"
+						th:errors="*{DFecha}"></div>
 						
 						<label 	for="monto">MONTO:</label> 
 						<input type="text" th:field="*{MMonto}" class="form-control" id="monto"></input>

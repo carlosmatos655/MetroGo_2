@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+		<meta charset="ISO-8859-1"></meta>
+		
+		<title>Registrar</title>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container" style="background-color: yellow">
+			<form th:action="@{/cliente/registrar}"method="post" th:object="${cliente}">
+				<div class="form-group">
+					
+					<label for="CCliente" style="color:yellow">Código:</label> 
+					<input type="text" class="form-control" th:field="*{CCliente}"></input>
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('CCliente')}" 
+							th:errors="*{CCliente}">
+						</div>
+						
+					<div class="form-group">
+					
+						<label 	for="numdni" style="color:yellow">Ingrese su DNI:</label> 
+						<input type="text" th:field="*{NumDNI}" class="form-control" id="numdni"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NumDNI')}" 
+							th:errors="*{NumDNI}">
+						</div>
+					</div>
+					
+					<div class="form-group">
+					
+						<label 	for="nombre" style="color:yellow">Ingrese su Nombre y Apellido:</label> 
+						<input type="text" th:field="*{NNombreyApellido}" class="form-control" id="nombre"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('NNombreyApellido')}" 
+							th:errors="*{NNombreyApellido}">
+						</div>
+					</div>
+					
+					<div class="form-group">
+					
+						<label 	for="TCorreo" style="color:yellow">Ingrese su correo electrónico:</label> 
+						<input type="text" th:field="*{TCorreo}" class="form-control" id="TCorreo"></input>
+	
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('TCorreo')}" 
+							th:errors="*{TCorreo}">
+						</div>
+					</div>
+					
+					<label for="FNacimiento" style="color:yellow">Ingrese su Fecha de Nacimiento:</label> <input
+						type="date" th:field="*{FNacimiento}" class="form-control"
+						id="FNacimiento"></input>
+						<!-- th:errors Se encarga del manejo de errores -->
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('FNacimiento')}"
+						th:errors="*{FNacimiento}"></div>
+					
+					<label for="nacionalidad" class=" col-sm-2 col-form-label" style="color:yellow">Elija su Nacionalidad:</label>
+					<select
+						class="form-control" th:field="*{nacionalidad.CNacionalidad}">
+						<option th:each="n: ${listaNacionalidades}" th:value="${n.CNacionalidad}"
+							th:text="${n.NNacionalidad}"
+							th:selected="(${n.CNacionalidad} == *{nacionalidad.CNacionalidad})"></option>
+					</select>
+					
+					<div th:object="${usuario}">
+						<div class="form-group">
+					
+							<label 	for="username" style="color:yellow">Ingrese su Usuario:</label> 
+							<input type="text" th:field="*{username}" class="form-control" id="username"></input>
+		
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" 
+								th:errors="*{username}">
+							</div>
+						</div>
+					
+						<div class="form-group">
+					
+							<label 	for="password" style="color:yellow">Ingrese su contraseña:</label> 
+							<input type="text" th:field="*{password}" class="form-control" id="password"></input>
+		
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" 
+								th:errors="*{password}">
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/cliente/listar" class="btn btn-danger">Cancelar</a>
+			</form>
+		</div>
+	
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>

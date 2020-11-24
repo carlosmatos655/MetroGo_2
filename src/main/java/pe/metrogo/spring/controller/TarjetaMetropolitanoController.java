@@ -54,14 +54,14 @@ public class TarjetaMetropolitanoController {
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid TarjetaMetropolitano objTMetro, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute("tmetro") @Valid TarjetaMetropolitano tmetro, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaClientes", cService.listar());
 			model.addAttribute("listaTTarjetasMetro", ttService.listar());
 			return "tmetro";
 		} else {
-			boolean flag = tService.insertar(objTMetro);
+			boolean flag = tService.insertar(tmetro);
 			if (flag) {
 				return "redirect:/tmetro/listar";
 			} else {

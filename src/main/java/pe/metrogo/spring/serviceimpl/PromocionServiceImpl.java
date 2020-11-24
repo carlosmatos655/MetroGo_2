@@ -12,8 +12,8 @@ import pe.metrogo.spring.repository.IPromocionRepository;
 import pe.metrogo.spring.service.IPromocionService;
 
 @Service
-public class PromocionServiceImpl implements IPromocionService{
-	
+public class PromocionServiceImpl implements IPromocionService {
+
 	@Autowired
 	private IPromocionRepository dPromocion;
 
@@ -21,8 +21,11 @@ public class PromocionServiceImpl implements IPromocionService{
 	@Transactional
 	public boolean insertar(Promocion promocion) {
 		// TODO Auto-generated method stub
-		Promocion objPromocion = dPromocion.save(promocion);
-		if(objPromocion == null)
+		Promocion objPromocion = null;
+		if (promocion.getDInicio().before(promocion.getDFin())) {
+			objPromocion = dPromocion.save(promocion);
+		}
+		if (objPromocion == null)
 			return false;
 		else
 			return true;
@@ -35,7 +38,7 @@ public class PromocionServiceImpl implements IPromocionService{
 		try {
 			dPromocion.save(promocion);
 			flag = true;
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Sucedio un error");
 		}
 		return flag;
@@ -68,5 +71,5 @@ public class PromocionServiceImpl implements IPromocionService{
 		// TODO Auto-generated method stub
 		return dPromocion.findByNPromocion(NPromocion);
 	}
-	
+
 }

@@ -40,12 +40,13 @@ public class EntidadBancariaController {
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid EntidadBancaria objEntidad, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute("entidad") @Valid EntidadBancaria entidad, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			return "entidadbancaria";
+			model.addAttribute("mensaje", "Ocurrio un error");
+			return "entidad";
 		} else {
-			boolean flag = eService.insertar(objEntidad);
+			boolean flag = eService.insertar(entidad);
 			if (flag) {
 				return "redirect:/entidad/listar";
 			} else {

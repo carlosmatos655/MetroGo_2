@@ -61,7 +61,7 @@ public class TarjetaCredController {
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid TarjetaCred objTarjeta, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute("tarjeta") @Valid TarjetaCred tarjeta, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaClientes", cService.listar());
@@ -69,7 +69,7 @@ public class TarjetaCredController {
 			model.addAttribute("listaTTarjetas", iService.listar());
 			return "tarjeta";
 		} else {
-			boolean flag = tService.insertar(objTarjeta);
+			boolean flag = tService.insertar(tarjeta);
 			if (flag) {
 				return "redirect:/tarjeta/listar";
 			} else {

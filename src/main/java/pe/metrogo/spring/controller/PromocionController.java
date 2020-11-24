@@ -40,12 +40,12 @@ public class PromocionController {
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid Promocion objPromocion, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute("promocion") @Valid Promocion promocion, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			return "promocion";
 		} else {
-			boolean flag = pService.insertar(objPromocion);
+			boolean flag = pService.insertar(promocion);
 			if (flag) {
 				return "redirect:/promocion/listar";
 			} else {

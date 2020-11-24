@@ -40,12 +40,12 @@ public class TipotarjetaCredController {
 	}
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute @Valid TipotarjetaCred objTTarjeta, BindingResult binRes, Model model)
+	public String registrar(@ModelAttribute("ttarjeta") @Valid TipotarjetaCred ttarjeta, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
 			return "ttarjeta";
 		} else {
-			boolean flag = tService.insertar(objTTarjeta);
+			boolean flag = tService.insertar(ttarjeta);
 			if (flag) {
 				return "redirect:/ttarjeta/listar";
 			} else {

@@ -28,9 +28,9 @@ public class Recarga {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CRecarga;
 	
-	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="DFecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DFecha;
 	
 	@Max(value = 500, message = "No se permite ingresar valores superiores a S/ .500")

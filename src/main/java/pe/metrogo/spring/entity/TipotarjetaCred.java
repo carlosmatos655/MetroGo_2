@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="tipotarjetacredito")
@@ -15,7 +16,7 @@ public class TipotarjetaCred {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CTTarjeta;
 	
-	
+	@NotEmpty(message="Debe ingresar el nombre de el tipo de tarjeta")
 	@Column(name="NTTarjeta", nullable=false, length=30)
 	private String NTTarjeta;
 

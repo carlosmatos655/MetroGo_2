@@ -15,7 +15,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,14 +40,14 @@ public class Promocion {
 	private double MDescuento;
 
 	@NotNull
-	@Past(message = "Ingresar una fecha correcta de inicio de la promoción")
+	@Future(message = "No permite colocar fechas pasadas")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DInicio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DInicio;
 
 	@NotNull
-	@Future(message = "Ingresar una fecha correcta de fin de la promoción")
+	@Future(message = "No permite colocar fechas pasadas")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DFin")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

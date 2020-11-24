@@ -85,7 +85,9 @@ public class ClienteController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/cliente/listar";
 		} else {
+			System.out.println("Antes del insertar");
 			model.addAttribute("listaNacionalidades", nService.listar());
+			System.out.println("Despues del insertar");
 			if (objCliente.isPresent())
 				objCliente.ifPresent(c -> model.addAttribute("cliente", c));
 			return "cliente";

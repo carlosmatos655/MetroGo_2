@@ -18,13 +18,12 @@ public class RecargaServiceImpl implements IRecargaService{
 	@Autowired
 	private IRecargaRepository dRecarga;
 	
-	Calendar car = Calendar.getInstance();
-	
 	@Override
 	@Transactional
 	public boolean insertar(Recarga recarga) {
 		// TODO Auto-generated method stub
 		System.out.println(recarga.getDFecha());
+		Calendar car = Calendar.getInstance();
 		recarga.setDFecha(car.getTime());
 		Recarga objRecarga = dRecarga.save(recarga);
 		if(objRecarga == null)

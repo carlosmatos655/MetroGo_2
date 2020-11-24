@@ -37,7 +37,7 @@
 						<label 	for="nombre">NOMBRE:</label> 
 						<input type="text" th:field="*{NTTarjetaMetro}" class="form-control" id="nombre"></input>
 	
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('NTTarjetaMetro')}" 
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('NTTarjetaMetro')}" 
 							th:errors="*{NTTarjetaMetro}">
 						</div>
 						

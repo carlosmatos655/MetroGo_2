@@ -52,13 +52,16 @@
                     			 <div class="form-group" id="contrasena-group">
                         			<input type="password" class="form-control" placeholder="Contraseña" name="password" required="true" id="password"/>
                     			 </div>
-                    			    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                    			    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Ingresar</button>
                 			</form>
                 
                 <input type="hidden" th:name="${_csrf.parameterName}"
 								th:value="${_csrf.token}" />
                 <div class="forgot">
                     <a href="#">Recordar contrasena</a>
+                </div>
+                <div class="registrar">
+                    <a href="#">¡Regístrate aquí!</a>
                 </div>
                 <div th:if="${param.error}" class="alert alert-danger" role="alert">
 		            Usuario y contrasena invalidos

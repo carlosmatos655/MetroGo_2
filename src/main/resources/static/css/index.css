@@ -42,8 +42,14 @@
 .forgot {
 	position: relative;
 	top: 40px; 
+	color: white;
 } 
 
+.registar {
+	position: relative;
+	top: 40px; 
+	color: white
+} 
 body {
 	background: #edf98a;
 	font-family: 'Open Sans', sans-serif;

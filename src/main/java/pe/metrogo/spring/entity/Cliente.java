@@ -36,7 +36,7 @@ public class Cliente implements Serializable {
 
 	@NotEmpty(message = "Debe ingresar su numero de dni completo")
 	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "NumDNI", nullable = false, length = 8)
+	@Column(name = "NumDNI", nullable = false, length = 8, unique = true)
 	private String numDNI;
 	
 	@NotEmpty(message = "Debe ingresar su nombre completo")

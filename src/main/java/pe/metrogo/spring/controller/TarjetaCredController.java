@@ -47,6 +47,11 @@ public class TarjetaCredController {
 		model.put("listaTarjetas", tService.listar());
 		return "listTarjeta";
 	}
+	
+	@RequestMapping("/bienvenido")
+	public String irTarjetaBienvenido() {
+		return "bienvenido";
+	}
 
 	@RequestMapping("/irRegistrar")
 	public String irRegistrar(Model model) {
